@@ -17,13 +17,25 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luisr
  */
-@WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
+@WebServlet(name = "Controlador", urlPatterns = {"/login", "/index"})
 public class Controlador extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String url = request.getServletPath();
+        String recurso = "";
+        switch(url){
+            case "/login":
+                recurso = "login.html";
+                break;
+                
+            case "/index":
+                recurso = "index.html";
+                            
+        }
+        request.getRequestDispatcher("/WEB-INF/"+recurso).forward(request, response);
         
     }
 

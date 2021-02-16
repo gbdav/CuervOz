@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luisr
  */
-@WebServlet(name = "Controlador",loadOnStartup = 1, urlPatterns = {"/login", "/catalogo", "/contactanos", "/ayuda", "/tables", "/registrar"})
+@WebServlet(name = "Controlador",loadOnStartup = 1, urlPatterns = {"/login", "/catalogo", "/contactanos", "/ayuda", "/tablas", "/registrar"})
 public class Controlador extends HttpServlet {
 
 
@@ -39,8 +39,8 @@ public class Controlador extends HttpServlet {
             case "/ayuda":
                 userPath = "/ayuda";
                 break;
-            case "/tables":
-                userPath = "/tables";
+            case "/tablas":
+                userPath = "/tablas";
                 break;
             case "/registrar":
                 userPath = "/registrar";

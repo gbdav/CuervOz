@@ -1,3 +1,17 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <%-- 
     Document   : catalogo
     Created on : 16 feb. 2021, 12:46:51
@@ -50,6 +64,26 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <img alt="cuervoz titulo" src="./assets/img/brand/cuervoz_titulo.png">
                         <!-- Search form -->
+                        <span class="col col-2"></span>    
+                        <a href="index.html" class="col col-2">
+                                            <span class="shortcut-media avatar rounded-circle bg-blue">
+                                                <i class="fas fa-home"></i>
+                                            </span>
+                            <small class="text-darker">Home</small>   
+                                        </a>
+                        <a href="login.html" class="col col-2">
+                                            <span class="shortcut-media avatar rounded-circle bg-blue">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                            <small class="text-darker">Login</small>
+                                        </a>
+                        <a href="mail.html" class="col col-2">
+                                            <span class="shortcut-media avatar rounded-circle bg-blue">
+                                                <i class="fas fa-mail-bulk"></i>
+                                            </span>
+                            <small class="text-darker">Buzon</small>
+                                        </a>
+                       
                         <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
                             <div class="form-group mb-0">
                                 <div class="input-group input-group-alternative input-group-merge">

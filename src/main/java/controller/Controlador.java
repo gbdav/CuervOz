@@ -32,7 +32,7 @@ public class Controlador extends HttpServlet {
                 break;
                 
             case "/index":
-                recurso = "index.jsp";
+                recurso = "index.html";
                             
         }
         request.getRequestDispatcher("/WEB-INF/"+recurso).forward(request, response);

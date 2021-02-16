@@ -17,25 +17,45 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luisr
  */
-@WebServlet(name = "Controlador", urlPatterns = {"/login", "/index"})
+@WebServlet(name = "Controlador",loadOnStartup = 1, urlPatterns = {"/login", "/catalogo", "/contactanos", "/ayuda", "/tables", "/registrar"})
 public class Controlador extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = request.getServletPath();
-        String recurso = "";
-        switch(url){
+        String userPath = request.getServletPath();
+
+        switch (userPath) {
             case "/login":
-                recurso = "login.html";
+                userPath = "/login";
                 break;
-                
-            case "/index":
-                recurso = "index.html";
-                            
+            case "/catalogo":
+                userPath = "/catalogo";
+                break;
+            case "/contactanos":
+                userPath = "/contactanos";
+                break;
+            case "/ayuda":
+                userPath = "/ayuda";
+                break;
+            case "/tables":
+                userPath = "/tables";
+                break;
+            case "/registrar":
+                userPath = "/registrar";
+                break;
+            default:
+                break;
         }
-        request.getRequestDispatcher("/WEB-INF/"+recurso).forward(request, response);
+
+        String url = "/WEB-INF/view" + userPath + ".jsp";
+
+        try {
+            request.getRequestDispatcher(url).forward(request, response);
+        } catch (IOException | ServletException ex) {
+            
+        }
         
     }
 

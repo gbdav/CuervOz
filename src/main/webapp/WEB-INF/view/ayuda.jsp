@@ -32,91 +32,91 @@
         <link rel="stylesheet" href="./assets/scss/core/utilities/_text.scss" type="text/css">
     </head>
     <body>
-        
-         <!-- Sidenav -->
-  <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
-    <div class="scrollbar-inner">
-      <!-- Brand -->
-      <img alt="cuervoz titulo" src="./assets/img/brand/cuervoz_titulo.png">
-      <div class="navbar-inner">
-        <!-- Collapse -->
-        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-          <!-- Nav items -->
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="catalogo.html">
-                <i class="ni ni-tv-2 text-primary"></i>
-                <span class="nav-link-text">Catalogo</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="tablas.html">
-                <i class="fas fa-table text-orange"></i>
-                <span class="nav-link-text">Tablas</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="profile.html">
-                <i class="ni ni-single-02 text-yellow"></i>
-                <span class="nav-link-text">Perfil</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="registro.html">
-                <i class="fas fa-pen text-dark"></i>
-                <span class="nav-link-text">Registro</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="ayuda.html">
-                <i class="fas fa-headset text-info"></i>
-                <span class="nav-link-text">Ayuda</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contactanos.html">
-                <i class="fas fa-phone text-pink"></i>
-                <span class="nav-link-text">Contactanos</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="acerca.html">
-                <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Acerca de Nosotros</span>
-              </a>
-            </li>
-          </ul> 
-        </div>
-      </div>
-    </div>
-  </nav>
-         <!-- Main content -->
-         <div class="main-content" id="panel">
-             <!-- Topnav -->
+
+        <!-- Sidenav -->
+        <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+            <div class="scrollbar-inner">
+                <!-- Brand -->
+                <img alt="cuervoz titulo" src="./assets/img/brand/cuervoz_titulo.png">
+                <div class="navbar-inner">
+                    <!-- Collapse -->
+                    <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                        <!-- Nav items -->
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="catalogo.html">
+                                    <i class="ni ni-tv-2 text-primary"></i>
+                                    <span class="nav-link-text">Catalogo</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="tablas.html">
+                                    <i class="fas fa-table text-orange"></i>
+                                    <span class="nav-link-text">Tablas</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="profile.html">
+                                    <i class="ni ni-single-02 text-yellow"></i>
+                                    <span class="nav-link-text">Perfil</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="registro.html">
+                                    <i class="fas fa-pen text-dark"></i>
+                                    <span class="nav-link-text">Registro</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ayuda.html">
+                                    <i class="fas fa-headset text-info"></i>
+                                    <span class="nav-link-text">Ayuda</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contactanos.html">
+                                    <i class="fas fa-phone text-pink"></i>
+                                    <span class="nav-link-text">Contactanos</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="acerca.html">
+                                    <i class="ni ni-send text-dark"></i>
+                                    <span class="nav-link-text">Acerca de Nosotros</span>
+                                </a>
+                            </li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Main content -->
+        <div class="main-content" id="panel">
+            <!-- Topnav -->
             <nav class="navbar navbar-top navbar-expand navbar-dark bg-white border-bottom">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <span class="col-2"></span>
                         <a href="/catalogo" class="col col-2">
-                                            <span class="shortcut-media avatar rounded-circle bg-blue">
-                                                <i class="fas fa-home"></i>
-                                            </span>
+                            <span class="shortcut-media avatar rounded-circle bg-blue">
+                                <i class="fas fa-home"></i>
+                            </span>
                             <small class="text-darker">Home</small>   
-                                        </a>
+                        </a>
                         <a href="/login" class="col col-2">
-                                            <span class="shortcut-media avatar rounded-circle bg-blue">
-                                                <i class="fas fa-user"></i>
-                                            </span>
+                            <span class="shortcut-media avatar rounded-circle bg-blue">
+                                <i class="fas fa-user"></i>
+                            </span>
                             <small class="text-darker">Login</small>
-                                        </a>
+                        </a>
                         <a href="mail" class="col col-2">
-                                            <span class="shortcut-media avatar rounded-circle bg-blue">
-                                                <i class="fas fa-mail-bulk"></i>
-                                            </span>
+                            <span class="shortcut-media avatar rounded-circle bg-blue">
+                                <i class="fas fa-mail-bulk"></i>
+                            </span>
                             <small class="text-darker">Buzon</small>
-                                        </a>
-                       
-                        
+                        </a>
+
+
                         <!-- Navbar links -->
                         <span class="col-2"></span>
                         <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
@@ -162,7 +162,7 @@
                     </div>
                 </div>
             </nav>
-             
-         </div>
+
+        </div>
     </body>
 </html>

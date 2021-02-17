@@ -67,43 +67,37 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="catalogo.html">
+              <a class="nav-link" href="catalogo">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Catalogo</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tablas.html">
-                <i class="fas fa-table text-orange"></i>
-                <span class="nav-link-text">Tablas</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="profile.html">
+              <a class="nav-link" href="profile">
                 <i class="ni ni-single-02 text-yellow"></i>
                 <span class="nav-link-text">Perfil</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="registro.html">
+              <a class="nav-link" href="registro">
                 <i class="fas fa-pen text-dark"></i>
                 <span class="nav-link-text">Registro</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="ayuda.html">
+              <a class="nav-link" href="ayuda">
                 <i class="fas fa-headset text-info"></i>
                 <span class="nav-link-text">Ayuda</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contactanos.html">
+              <a class="nav-link" href="contactanos">
                 <i class="fas fa-phone text-pink"></i>
                 <span class="nav-link-text">Contactanos</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="acerca.html">
+              <a class="nav-link" href="acerca">
                 <i class="ni ni-send text-dark"></i>
                 <span class="nav-link-text">Acerca de Nosotros</span>
               </a>
@@ -229,7 +223,6 @@
                                     <tbody class="list">
                                     <div class="album py-5 bg-light">
                                         <div class="container">
-                                            
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="card mb-4 box-shadow">

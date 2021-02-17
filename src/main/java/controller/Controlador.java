@@ -39,11 +39,20 @@ public class Controlador extends HttpServlet {
             case "/ayuda":
                 userPath = "/ayuda";
                 break;
-            case "/tablas":
-                userPath = "/tablas";
+            case "/buzon":
+                userPath = "/buzon";
                 break;
             case "/registrar":
                 userPath = "/registrar";
+                break;
+                case "/mapa_sitio":
+                userPath = "/mapa_sitio";
+                break;
+                case "/recuperacion":
+                userPath = "/recuperacion";
+                break;
+                case "/tablas":
+                userPath = "/tablas";
                 break;
             default:
                 break;

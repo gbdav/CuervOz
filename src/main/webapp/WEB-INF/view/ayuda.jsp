@@ -37,7 +37,7 @@
         <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
             <div class="scrollbar-inner">
                 <!-- Brand -->
-                <img alt="cuervoz titulo" src="./assets/img/brand/cuervoz_titulo.png">
+                <img alt="cuervoz titulo" src="assets/img/brand/cuervoz_titulo.png">
                 <div class="navbar-inner">
                     <!-- Collapse -->
                     <div class="collapse navbar-collapse" id="sidenav-collapse-main">
@@ -162,7 +162,91 @@
                     </div>
                 </div>
             </nav>
+            <!-- Header -->
+            <div class="header bg-primary pb-6">
+                <div class="container-fluid">
+                    <div class="header-body">
+                        <div class="row align-items-center py-4">
+                            <div class="col-lg-6 col-7">
+                                <h6 class="h2 text-white d-inline-block mb-0">Ayuda</h6>
+                                <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                                    <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                        <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="#">Catalogo</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Ayuda</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page content -->
+            <div class="container-fluid mt--6">
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="card bg-secondary border-0 mb-0">
+                                            <div class="card-header bg-transparent">
+                                                <div class="text-muted text-center mt-2 mb-3"><h1>Centro de ayuda</h1></div>
+                                            </div>
+                                            <div class="card-body px-lg-5 py-lg-5">
+                                                <h1 class="text-dark">Preguntas Frecuentes</h1>
+                                                <hr>
+                                                <p class="text-lead font-weight-bold">
+                                                    ¿Dónde se elabora el tequila?
+                                                </p>
+                                                <p class="text-lead text-dark">
+                                                    Para calificar como tequila, la bebida alcohólica debe elaborarse en Jalisco, México y en muy pocas áreas vecinas. Para determinar si el tequila se elaboró en México, busque la etiqueta “Hecho en México” (“Made in Mexico” en inglés).
+                                                </p>
+                                                <br>
+                                                <p class="text-lead font-weight-bold">
+                                                    ¿Qué es un tequila reposado?                                                    </p>
+                                                <p class="text-lead text-dark">
+                                                    Reposado es un estilo de tequila añejado. Para calificar como reposado, el tequila debe añejarse en barriles o tanques de almacenamiento entre 2 y 11 meses. La mayoría de las marcas de tequila usan una gran variedad de barriles de madera para añejar el reposado, pero los más populares son el roble americano y el roble francés.                                                    </p>
+                                                <br>
+                                                <p class="text-lead font-weight-bold">
+                                                    ¿Qué es un tequila añejo?                                                    </p>
+                                                <p class="text-lead text-dark">
+                                                    Añejo es un estilo de tequila añejado. Añejo significa que el tequila ha sido añejado en cualquier recipiente de uno a tres años, normalmente barriles de roble. La mayoría de las destilerías usan una gran variedad de barriles de madera para añejar el tequila Añejo, pero los más populares son el roble americano y el roble francés.                                                    </p>
+                                                <br>
+                                                <p class="text-lead font-weight-bold">
+                                                    ¿Cómo se agita en seco?                                                    </p>
+                                                <p class="text-lead text-dark">
+                                                    Agitar en seco un cóctel es esencial al preparar cócteles que requieren huevos, claras de huevos o crema espesa. Primero, combine los ingredientes en una coctelera sin hielo y agite. Agregue hielo y agite vigorosamente para enfriar y diluir el cóctel, y luego sirva.                                                    </p>
+                                                <br>
+                                                <p class="text-lead font-weight-bold">
+                                                    ¿Cómo se prepara el jarabe simple?                                                    </p>
+                                                <p class="text-lead text-dark">
+                                                    Para preparar un jarabe simple para cócteles, combine una taza de agua y una taza de azúcar en una olla y cueza sobre fuego medio-alto, revolviendo ocasionalmente hasta que se disuelva totalmente el azúcar. No permita que hierva. Retire la mezcla del fuego, enfríe y refrigere por hasta cuatro semanas.                                                    </p>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <footer class="footer pt-0">
 
+            </footer>
         </div>
-    </body>
+    </div>
+</div>
+<!-- Argon Scripts -->
+        <!-- Core -->
+        <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/js-cookie/js.cookie.js"></script>
+        <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+        <!-- Argon JS -->
+        <script src="assets/js/argon.js?v=1.2.0"></script>
+</body>
 </html>

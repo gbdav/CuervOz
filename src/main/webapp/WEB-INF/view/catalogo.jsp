@@ -83,7 +83,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="acerca.html">
+              <a class="nav-link" href="acerca">
                 <i class="ni ni-send text-dark"></i>
                 <span class="nav-link-text">Acerca de Nosotros</span>
               </a>
@@ -209,7 +209,6 @@
                                     <tbody class="list">
                                     <div class="album py-5 bg-light">
                                         <div class="container">
-                                            
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="card mb-4 box-shadow">

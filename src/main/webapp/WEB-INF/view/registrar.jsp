@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+  <title>Registro</title>
   <!-- Favicon -->
   <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
@@ -29,8 +29,8 @@
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="dashboard.html">
-        <img src="assets/img/brand/white.png">
+      <a class="navbar-brand" href="./catalogo">
+        <img src="./assets/img/brand/cuervoz_titulo.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -39,8 +39,8 @@
         <div class="navbar-collapse-header">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="dashboard.html">
-                <img src="assets/img/brand/blue.png">
+              <a href="./catalogo">
+                  <img src="./assets/img/brand/cuervoz_titulo.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -53,17 +53,17 @@
         </div>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a href="dashboard.html" class="nav-link">
-              <span class="nav-link-inner--text">Dashboard</span>
+            <a href="./catalogo" class="nav-link">
+              <span class="nav-link-inner--text">Catalogo</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="login.html" class="nav-link">
+            <a href="./login" class="nav-link">
               <span class="nav-link-inner--text">Login aqui</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="register.html" class="nav-link">
+            <a href="./registrar" class="nav-link">
               <span class="nav-link-inner--text">Register</span>
             </a>
           </li>
@@ -136,11 +136,11 @@
               <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
               <div class="text-center">
                 <a href="#" class="btn btn-neutral btn-icon mr-4">
-                  <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg"></span>
+                    <span class="btn-inner--icon"><img src="./assets/img/icons/common/github.svg"></span>
                   <span class="btn-inner--text">Github</span>
                 </a>
                 <a href="#" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
+                  <span class="btn-inner--icon"><img src="./assets/img/icons/common/google.svg"></span>
                   <span class="btn-inner--text">Google</span>
                 </a>
               </div>
@@ -149,13 +149,13 @@
               <div class="text-center text-muted mb-4">
                 <small>Or sign up with credentials</small>
               </div>
-              <form role="form">
+                <form role="form" action="catalogo">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Name" type="text">
+                      <input class="form-control" required placeholder="Name" type="text">
                   </div>
                 </div>
                 <div class="form-group">
@@ -163,7 +163,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input class="form-control" required placeholder="Email" type="email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -171,7 +171,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input class="form-control" required placeholder="Password" type="password">
                   </div>
                 </div>
                 <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
@@ -186,7 +186,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4">Create account</button>
+                  <button type="submit" class="btn btn-primary mt-4">Create account</button>
                 </div>
               </form>
             </div>

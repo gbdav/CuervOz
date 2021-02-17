@@ -1,24 +1,9 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <%-- 
     Document   : catalogo
     Created on : 16 feb. 2021, 12:46:51
     Author     : luisr
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 
@@ -46,13 +31,6 @@
         <link rel="stylesheet" href="./assets/scss/core/utilities/_text.scss" type="text/css"/>
         <link rel="stylesheet" href="./assets/scss/core/utilities/_text.scss" type="text/css">
 
-
-
-
-
-
-
-
     </head>
 
     <body>
@@ -60,20 +38,22 @@
   <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
       <!-- Brand -->
+      <a href="./">
       <img alt="cuervoz titulo" src="./assets/img/brand/cuervoz_titulo.png">
+      </a>
       <div class="navbar-inner">
         <!-- Collapse -->
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="catalogo.html">
+              <a class="nav-link" href="./catalogo">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Catalogo</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tablas.html">
+              <a class="nav-link" href="./tablas">
                 <i class="fas fa-table text-orange"></i>
                 <span class="nav-link-text">Tablas</span>
               </a>
@@ -85,19 +65,19 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="registro.html">
+              <a class="nav-link" href="./registrar">
                 <i class="fas fa-pen text-dark"></i>
                 <span class="nav-link-text">Registro</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="ayuda.html">
+              <a class="nav-link" href="./ayuda">
                 <i class="fas fa-headset text-info"></i>
                 <span class="nav-link-text">Ayuda</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contactanos.html">
+              <a class="nav-link" href="./contactanos">
                 <i class="fas fa-phone text-pink"></i>
                 <span class="nav-link-text">Contactanos</span>
               </a>
@@ -120,13 +100,13 @@
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <span class="col-2"></span>
-                        <a href="/catalogo" class="col col-2">
+                        <a href="./" class="col col-2">
                                             <span class="shortcut-media avatar rounded-circle bg-blue">
                                                 <i class="fas fa-home"></i>
                                             </span>
                             <small class="text-darker">Home</small>   
                                         </a>
-                        <a href="/login" class="col col-2">
+                        <a href="./login" class="col col-2">
                                             <span class="shortcut-media avatar rounded-circle bg-blue">
                                                 <i class="fas fa-user"></i>
                                             </span>

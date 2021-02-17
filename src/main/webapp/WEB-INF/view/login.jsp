@@ -58,8 +58,8 @@
         <!-- Navbar -->
         <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="dashboard.html">
-                    <img src="assets/img/brand/white.png">
+                <a class="navbar-brand" href="./catalogo">
+                    <img src="./assets/img/brand/cuervoz_titulo.png">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -68,7 +68,7 @@
                     <div class="navbar-collapse-header">
                         <div class="row">
                             <div class="col-6 collapse-brand">
-                                <a href="dashboard.html">
+                                <a href="./catalogo">
                                     <img src="assets/img/brand/blue.png">
                                 </a>
                             </div>
@@ -138,13 +138,13 @@
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
                                 
-                                <form role="form">
+                                <form role="form" action="catalogo">
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
-                                            <input class="form-control" placeholder="Correo" type="email">
+                                            <input class="form-control" required placeholder="Correo" type="email">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -152,11 +152,11 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                             </div>
-                                            <input class="form-control" placeholder="Contraseña" type="password">
+                                            <input class="form-control" required placeholder="Contraseña" type="password">
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button onclick="index" type="button" class="btn btn-primary my-4">Iniciar sesión</button>
+                                        <button type="submit" class="btn btn-primary my-4">Iniciar sesión</button>
                                     </div>
                                 </form>
                             </div>

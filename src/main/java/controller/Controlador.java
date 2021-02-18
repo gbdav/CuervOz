@@ -32,7 +32,8 @@ import javax.servlet.http.HttpServletResponse;
     "/buzon", 
     "/mapa_sitio", 
     "/recuperar_contraseña",
-    "/acerca"
+    "/acerca",
+    "error"    
 })
 public class Controlador extends HttpServlet {
 
@@ -72,6 +73,9 @@ public class Controlador extends HttpServlet {
                     break;
                 case "/recuperar_contraseña":
                     userPath = "/recuperar_contraseña";
+                    break;
+                 case "/error":
+                    userPath = "/error.html";
                     break;
                 default:
                     case "/acerca":

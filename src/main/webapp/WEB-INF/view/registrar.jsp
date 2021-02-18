@@ -216,11 +216,11 @@
       
    try{
    Class.forName("com.mysql.cj.jdbc.Driver");
-   cnx=DriverManager.getConnection("jdbc:mysql://localhost:3306/cuervos?user=root&paswword=123456");
+   cnx=DriverManager.getConnection("jdbc:mysql://localhost:3306/cuervos?useSSL=fals?euser=root&paswword=123456");
    
    sta=cnx.createStatement();
    
-   sta.executeUpdate("insert into usuario values('"+nombre+"', '"+appaterno+"','"+apmaterno+"','"+nomusuario+"','"+contraseña+"')");
+   sta.executeQuery("insert into usuario values('"+nombre+"', '"+appaterno+"','"+apmaterno+"','"+nomusuario+"','"+contraseña+"')");
    request.getRequestDispatcher("login.jsp").forward(request, response);
    }catch(Exception e){out.print(e+"");}
    

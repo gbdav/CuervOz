@@ -5,8 +5,13 @@
  */
 package controller;
 
+import daos.DaoProductos;
+import dtos.DtoProductos;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,56 +22,79 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luisr
  */
-@WebServlet(name = "Controlador",loadOnStartup = 1, urlPatterns = {"/login", "/catalogo", "/contactanos", "/ayuda", "/tablas", "/registrar"})
+@WebServlet(name = "Controlador",loadOnStartup = 1, urlPatterns = {
+    "/login", 
+    "/catalogo", 
+    "/contactanos", 
+    "/ayuda", 
+    "/tablas", 
+    "/registrar", 
+    "/buzon", 
+    "/mapa_sitio", 
+    "/recuperar_contraseña"
+})
 public class Controlador extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String userPath = request.getServletPath();
+        throws ServletException, IOException {
+            String userPath = request.getServletPath();
 
-        switch (userPath) {
-            case "/login":
-                userPath = "/login";
-                break;
-            case "/catalogo":
-                userPath = "/catalogo";
-                break;
-            case "/contactanos":
-                userPath = "/contactanos";
-                break;
-            case "/ayuda":
-                userPath = "/ayuda";
-                break;
-            case "/buzon":
-                userPath = "/buzon";
-                break;
-            case "/registrar":
-                userPath = "/registrar";
-                break;
+            switch (userPath) {
+                case "/login":
+                    userPath = "/login";
+                    break;
+                case "/catalogo":
+                    userPath = "/catalogo";
+                    break;
+                case "/contactanos":
+                    userPath = "/contactanos";
+                    break;
+                case "/ayuda":
+                    userPath = "/ayuda";
+                    break;
+                case "/registrar":
+                    userPath = "/registrar";
+                    break;
+                case "/buzon":
+                    userPath = "/buzon";
+                    break;
                 case "/mapa_sitio":
-                userPath = "/mapa_sitio";
-                break;
+                    userPath = "/mapa_sitio";
+                    break;
                 case "/recuperacion":
-                userPath = "/recuperacion";
-                break;
+                    userPath = "/recuperacion";
+                    break;
                 case "/tablas":
-                userPath = "/tablas";
-                break;
-            default:
-                break;
-        }
+                    userPath = "/tablas";
+                    break;
+                case "/recuperar_contraseña":
+                    userPath = "/recuperar_contraseña";
+                    break;
+                default:
+                    break;
+            }
 
-        String url = "/WEB-INF/view" + userPath + ".jsp";
+            String url = "/WEB-INF/view" + userPath + ".jsp";
 
-        try {
-            request.getRequestDispatcher(url).forward(request, response);
-        } catch (IOException | ServletException ex) {
-            
+            try {
+                if( userPath == "/catalogo" ){
+                    DaoProductos dao = new  DaoProductos();
+                    List<DtoProductos> datos = dao.read();
+                    /*datos.forEach(dto -> {
+                        System.out.println("id: " + dto.getIdprod());
+                    });*/
+                    request.setAttribute("datos", datos);
+                }else {
+                    System.out.println("no catalogo");
+                }
+                request.getRequestDispatcher(url).forward(request, response);
+            } catch (IOException | ServletException ex) {} catch (Exception ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }
+        }
 
 
     @Override

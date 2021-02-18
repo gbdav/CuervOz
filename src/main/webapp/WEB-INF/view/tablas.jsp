@@ -109,7 +109,7 @@
                                             </span>
                             <small class="text-darker">Login</small>
                                         </a>
-                        <a href="./mail" class="col col-2">
+                        <a href="./buzon" class="col col-2">
                                             <span class="shortcut-media avatar rounded-circle bg-blue">
                                                 <i class="fas fa-mail-bulk"></i>
                                             </span>

@@ -1,30 +1,18 @@
 <%-- 
-    Document   : login
-    Created on : 16 feb. 2021, 12:44:26
-    Author     : luisr
+    Document   : recuperar_contraseña
+    Created on : 17 feb 2021, 22:02:42
+    Author     : david
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!--
-=========================================================
-* Argon Dashboard - v1.2.0
-=========================================================
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-
-* Copyright  Creative Tim (http://www.creative-tim.com)
-* Coded by www.creative-tim.com
-=========================================================
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
         <meta name="author" content="Creative Tim">
-        <title>Login</title>
+        <title>Recuperación de contraseña</title>
         <!-- Favicon -->
         <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
         <!-- Fonts -->
@@ -131,43 +119,35 @@
             <!-- Page content -->
             <div class="container mt--8 pb-5">
                 <div class="row justify-content-center">
-                    <div class="col-lg-5 col-md-7">
+                    <div class="col-md-4 col-md-offset-4">
                         <div class="card bg-secondary border-0 mb-0">
-                            <div class="card-header bg-transparent">
-                                <div class="text-muted text-center mt-2 mb-3"><h1>Iniciar sesión</h1></div>
-                            </div>
-                            <div class="card-body px-lg-5 py-lg-5">
-                                
-                                <form role="form" action="catalogo">
-                                    <div class="form-group mb-3">
-                                        <div class="input-group input-group-merge input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                            </div>
-                                            <input class="form-control" required placeholder="Correo" type="email">
-                                        </div>
+                            <div class="panel panel-default">
+                            <div class="panel-body">
+                              <div class="text-center">
+                                <h3><i class="fa fa-lock fa-4x"></i></h3>
+                                <h2 class="text-center">Forgot Password?</h2>
+                                <p>You can reset your password here.</p>
+                                <div class="panel-body">
+
+                                  <form id="register-form" action="./login" role="form" autocomplete="off" class="form">
+
+                                    <div class="form-group">
+                                      <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                        <input id="email" name="email" required placeholder="email address" class="form-control"  type="email">
+                                      </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="input-group input-group-merge input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                            </div>
-                                            <input class="form-control" required placeholder="Contraseña" type="password">
-                                        </div>
+                                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
                                     </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary my-4">Iniciar sesión</button>
-                                    </div>
-                                </form>
+
+                                    <input type="hidden" class="hide" name="token" id="token" value=""> 
+                                  </form>
+
+                                </div>
+                              </div>
                             </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-6">
-                                <a href="./recuperar_contraseña" class="text-light"><small>¿Olvidaste tu contraseña?</small></a>
-                            </div>
-                            <div class="col-6 text-right">
-                                <a href="./registrar" class="text-light"><small>Crear una nueva cuenta</small></a>
-                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -186,6 +166,4 @@
         <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
         <!-- Argon JS -->
         <script src="assets/js/argon.js?v=1.2.0"></script>
-    </body>
-
 </html>

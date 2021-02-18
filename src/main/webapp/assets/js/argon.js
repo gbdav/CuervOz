@@ -1,29 +1,24 @@
 
-/*!
-
-=========================================================
-* Argon Dashboard - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
-
-
-//
-// Layout
-//
-
 'use strict';
+
+function buscar_prods() { 
+    var input, filtro, items, prods, a, i, txtValue;
+    input = document.getElementById('searchbar');
+    filtro = input.value.toUpperCase();
+    items = document.getElementById("items");
+    prods = items.getElementsByClassName('productos');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < prods.length; i++) {
+        a = prods[i].getElementsByTagName("h3")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filtro) > -1) {
+            prods[i].style.display = "";
+        } else {
+            prods[i].style.display = "none";
+        }
+    }
+} 
 
 var Layout = (function() {
 

@@ -81,33 +81,31 @@
                             <!-- Light table -->
                             <!-- Search form -->
                             <div class="table-responsive">
-                                <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
-                                     <div class="form-group mb-0">
-                                        <div class="input-group input-group-alternative input-group-merge">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-search"></i></span>
-                                            </div>
-                                                <input class="form-control" placeholder="Search" type="text">
+                                <div class="form-group mb-0">
+                                    <div class="input-group input-group-alternative input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-search"></i></span>
                                         </div>
+                                        <input id="searchbar" onkeyup="buscar_prods()" name="search" class="form-control" placeholder="Buscar productos" type="text">
                                     </div>
-                                        <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
-                                        </button>
-                                </form>
+                                </div>
+                                <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+                                </button>
                                 <table class="table align-items-center table-flush">
                                     <tbody class="list">
                                     <div class="album py-5 bg-light">
                                         <div class="container">
-                                            <div class="row">
+                                            <div id="items" class="row">
                                                 <!--aqui-->
                                                 <% for(int i=0; i<listaReq.size();i++){ %>
-                                                    <div class="col-md-4">
+                                                    <div class="productos col-md-4">
                                                         <div class="card mb-4 box-shadow">
                                                             <div class="card-header border-0">
                                                                 <div class="row align-items-center">
                                                                     <h3 class="m-0"><%= listaReq.get(i).getNombre() %></h3>
                                                                 </div>
                                                             </div>
-                                                                <img src="<%= listaReq.get(i).getImgprod() %>">
+                                                                <img class="img-fluid" src="<%= listaReq.get(i).getImgprod() %>">
                                                             <div class="card-body">
                                                                 <p class="card-text"><%= listaReq.get(i).getDecripcion() %></p>
                                                             </div>
@@ -147,7 +145,7 @@
         <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
         <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
         <!-- Argon JS -->
-        <script src="assets/js/argon.js?v=1.2.0"></script>
+        <script src="assets/js/argon.js"></script>
     </body>
 
 </html>

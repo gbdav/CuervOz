@@ -86,8 +86,6 @@ public class Controlador extends HttpServlet {
                         System.out.println("id: " + dto.getIdprod());
                     });*/
                     request.setAttribute("datos", datos);
-                }else {
-                    System.out.println("no catalogo");
                 }
                 request.getRequestDispatcher(url).forward(request, response);
             } catch (IOException | ServletException ex) {} catch (Exception ex) {

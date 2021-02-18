@@ -129,12 +129,12 @@
                                 <p>You can reset your password here.</p>
                                 <div class="panel-body">
 
-                                  <form id="register-form" action="./login" role="form" autocomplete="off" class="form">
+                                  <form id="register-form" action="./login">
 
                                     <div class="form-group">
                                       <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                        <input id="email" name="email" required placeholder="email address" class="form-control"  type="email">
+                                        <input id="email" required placeholder="email address" class="form-control"  type="email">
                                       </div>
                                     </div>
                                     <div class="form-group">

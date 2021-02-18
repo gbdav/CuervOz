@@ -3,11 +3,13 @@
     Created on : 16-feb-2021, 11:20:49
     Author     : david
 --%>
-
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -59,12 +61,12 @@
           </li>
           <li class="nav-item">
             <a href="./login" class="nav-link">
-              <span class="nav-link-inner--text">Login aqui</span>
+              <span class="nav-link-inner--text">Login</span>
             </a>
           </li>
           <li class="nav-item">
             <a href="./registrar" class="nav-link">
-              <span class="nav-link-inner--text">Register</span>
+              <span class="nav-link-inner--text">Registrar</span>
             </a>
           </li>
         </ul>
@@ -94,14 +96,6 @@
               <span class="nav-link-inner--text d-lg-none">Github</span>
             </a>
           </li>
-          <li class="nav-item d-none d-lg-block ml-lg-4">
-            <a href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=ad_upgrade_pro" target="_blank" class="btn btn-neutral btn-icon">
-              <span class="btn-inner--icon">
-                <i class="fas fa-shopping-cart mr-2"></i>
-              </span>
-              <span class="nav-link-inner--text">Upgrade to PRO</span>
-            </a>
-          </li>
         </ul>
       </div>
     </div>
@@ -114,8 +108,8 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-              <h1 class="text-white">Create an account</h1>
-              <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+              <h1 class="text-white">Crea tu cuenta CuervOz</h1>
+              <p class="text-lead text-white">Usa tu cuenta CuervOz y accede a beneficios exclusivos</p>
             </div>
           </div>
         </div>
@@ -133,12 +127,8 @@
         <div class="col-lg-6 col-md-8">
           <div class="card bg-secondary border-0">
             <div class="card-header bg-transparent pb-5">
-              <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
+              <div class="text-muted text-center mt-2 mb-4"><small>Registrate con</small></div>
               <div class="text-center">
-                <a href="#" class="btn btn-neutral btn-icon mr-4">
-                    <span class="btn-inner--icon"><img src="./assets/img/icons/common/github.svg"></span>
-                  <span class="btn-inner--text">Github</span>
-                </a>
                 <a href="#" class="btn btn-neutral btn-icon">
                   <span class="btn-inner--icon"><img src="./assets/img/icons/common/google.svg"></span>
                   <span class="btn-inner--text">Google</span>
@@ -147,7 +137,7 @@
             </div>
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign up with credentials</small>
+                <small>Crear cuenta</small>
               </div>
                 <form role="form" action="catalogo">
                 <div class="form-group">
@@ -155,15 +145,32 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                      <input class="form-control" required placeholder="Name" type="text">
+                      <input class="form-control" required placeholder="Nombre" type="text" name="txtnombre">
+                      
+                  </div>
+                </div>
+                     <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                      <input class="form-control" required placeholder="Primer apellido" type="text" name="txtpaterno">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" required placeholder="Email" type="email">
+                      <input class="form-control" required placeholder="Segundo apellido" type="text" name="txtmaterno">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                      <input class="form-control" required placeholder="Nombre de usuario" type="text" name="txtnomusu">
                   </div>
                 </div>
                 <div class="form-group">
@@ -171,22 +178,21 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" required placeholder="Password" type="password">
+                    <input class="form-control" required placeholder="Password" type="password" name="txtpass">
                   </div>
                 </div>
-                <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
                       <input class="custom-control-input" id="customCheckRegister" type="checkbox">
                       <label class="custom-control-label" for="customCheckRegister">
-                        <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
+                        <span class="text-muted">Estoy de acuerdo con las <a href="#!">Politicas de privacidad</a></span>
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary mt-4">Create account</button>
+                  <button type="submit" class="btn btn-primary mt-4" name="crear">Crear cuenta</button>
                 </div>
               </form>
             </div>
@@ -195,28 +201,54 @@
       </div>
     </div>
   </div>
+  
+  <% 
+      if(request.getParameter("crear")!=null){
+    String nombre=request.getParameter("txtnombre");
+    String appaterno=request.getParameter("txtpaterno");
+    String apmaterno=request.getParameter("txtmaterno");
+    String nomusuario=request.getParameter("txtnomusus");
+    String contraseña=request.getParameter("txtpass");
+    
+      Connection cnx=null;
+      ResultSet rs= null;
+      Statement sta=null;
+      
+   try{
+   Class.forName("com.mysql.cj.jdbc.Driver");
+   cnx=DriverManager.getConnection("jdbc:mysql://localhost:3306/cuervos?user=root&paswword=123456");
+   
+   sta=cnx.createStatement();
+   
+   sta.executeUpdate("insert into usuario values('"+nombre+"', '"+appaterno+"','"+apmaterno+"','"+nomusuario+"','"+contraseña+"')");
+   request.getRequestDispatcher("login.jsp").forward(request, response);
+   }catch(Exception e){out.print(e+"");}
+   
+      }
+   %>
+  
   <!-- Footer -->
   <footer class="py-5" id="footer-main">
     <div class="container">
       <div class="row align-items-center justify-content-xl-between">
         <div class="col-xl-6">
           <div class="copyright text-center text-xl-left text-muted">
-            &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+            Copyright © 2020 - CuervOz
           </div>
         </div>
         <div class="col-xl-6">
           <ul class="nav nav-footer justify-content-center justify-content-xl-end">
             <li class="nav-item">
-              <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+              <a class="nav-link" target="_blank">Contactanos</a>
             </li>
             <li class="nav-item">
-              <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+              <a href="contactanos" class="nav-link" target="_blank">Más información</a>
             </li>
             <li class="nav-item">
-              <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+              <a class="nav-link" target="_blank">+1 (555) 123-4567</a>
             </li>
             <li class="nav-item">
-              <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+              <a href="http://blog.creative-ink" target="_blank">Blog</a>
             </li>
           </ul>
         </div>

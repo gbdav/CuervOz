@@ -18,12 +18,6 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./tablas">
-                <i class="fas fa-table text-orange"></i>
-                <span class="nav-link-text">Tablas</span>
-              </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="./registrar">
                 <i class="fas fa-pen text-dark"></i>
                 <span class="nav-link-text">Registro</span>
@@ -31,7 +25,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./ayuda">
-                <i class="fas fa-headset text-info"></i>
+                <i class="fas fa-question text-info"></i>
                 <span class="nav-link-text">Ayuda</span>
               </a>
             </li>
@@ -43,8 +37,14 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="acerca">
-                <i class="ni ni-send text-dark"></i>
+                <i class="ni ni-app text-dark"></i>
                 <span class="nav-link-text">Acerca de Nosotros</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mapa_sitio">
+                <i class="ni ni-send text-dark"></i>
+                <span class="nav-link-text">Mapa del Sitio</span>
               </a>
             </li>
           </ul> 

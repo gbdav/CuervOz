@@ -89,7 +89,7 @@
                                         <input id="searchbar" onkeyup="buscar_prods()" name="search" class="form-control" placeholder="Buscar productos" type="text">
                                     </div>
                                 </div>
-                                <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close" href="error">
+                                <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
                                 </button>
                                 <table class="table align-items-center table-flush">
                                     <tbody class="list">
@@ -102,13 +102,7 @@
                                                         <div class="card mb-4 box-shadow">
                                                             <div class="card-header border-0">
                                                                 <div class="row align-items-center">
-                                                                    <h3 class="m-0"><%= listaReq.get(i).getNombre() %></h3>="">
-                                </button>
-                                <table class="table align-items-center table-flush">
-                                    <tbody class="list">
-                                    <div class="album py-5 bg-light">
-                                        <div class="container">
-                                            <div id="items" class="row">
+                                                                    <h3 class="m-0"><%= listaReq.get(i).getNombre() %></h3>
                                                                 </div>
                                                             </div>
                                                                 <img class="img-fluid" src="<%= listaReq.get(i).getImgprod() %>">
@@ -121,7 +115,7 @@
                                                                         <h3 class="mb-0"><%= listaReq.get(i).getCosto() %></h3>
                                                                     </div>
                                                                     <div class="col text-right">
-                                                                        <a href="#!" class="btn btn-sm btn-primary">Comprar</a>
+                                                                        <a href="error" class="btn btn-sm btn-primary">Comprar</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

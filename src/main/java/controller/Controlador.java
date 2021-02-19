@@ -33,7 +33,7 @@ import javax.servlet.http.HttpServletResponse;
     "/mapa_sitio", 
     "/recuperar_contraseña",
     "/acerca",
-    "error"    
+    "/error"    
 })
 public class Controlador extends HttpServlet {
 
@@ -82,9 +82,12 @@ public class Controlador extends HttpServlet {
                     userPath = "/acerca";
                     break;
             }
-
-            String url = "/WEB-INF/view" + userPath + ".jsp";
-
+            String url;
+            if("/error.html".equals(userPath)){
+                url = "/WEB-INF" + userPath;
+            }else{
+                url = "/WEB-INF/view" + userPath + ".jsp";
+            }
             try {
                 if( userPath == "/catalogo" ){
                     DaoProductos dao = new  DaoProductos();

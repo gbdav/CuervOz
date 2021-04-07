@@ -138,7 +138,7 @@
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
                                 
-                                <form role="form" action="catalogo">
+                                <form role="form" action="Validar" method="Post">
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">

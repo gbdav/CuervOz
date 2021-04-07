@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TestProductos {
-    String URL="jdbc:mysql://localhost:3306/cuervos?useSSL=false";
+    String URL="jdbc:mysql://localhost:3306/cuervoz?useSSL=false";
     String USER="root";
-    String PWD="1234";
+    String PWD="123barcenas";
     Connection conn;
     ResultSet rs;
     PreparedStatement pst;

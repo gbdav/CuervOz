@@ -8,7 +8,6 @@ package controller;
 import daos.DaoProductos;
 import dtos.DtoProductos;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,11 +32,10 @@ import javax.servlet.http.HttpServletResponse;
     "/mapa_sitio", 
     "/recuperar_contraseña",
     "/acerca",
-    "/error"    
+    "/error",
+    "/Validar"    
 })
 public class Controlador extends HttpServlet {
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
@@ -99,21 +97,7 @@ public class Controlador extends HttpServlet {
                 }
                 request.getRequestDispatcher(url).forward(request, response);
             } catch (IOException | ServletException ex) {} catch (Exception ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        }
-
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
-
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
-        
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex); 
+        }             
+    }   
 }

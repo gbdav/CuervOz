@@ -11,9 +11,9 @@ import java.util.List;
 
 public class DaoProductos implements IProductos {
     
-    static String URL="jdbc:mysql://localhost:3306/cuervos?useSSL=false"; //La  conexion
+    static String URL="jdbc:mysql://localhost:3306/cuervoz?useSSL=false"; //La  conexion
     static String USER="root";
-    static String PWD="1234";
+    static String PWD="123barcenas";
 
     Connection conn;
     ResultSet rs;

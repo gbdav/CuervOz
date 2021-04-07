@@ -33,7 +33,7 @@ import javax.servlet.http.HttpServletResponse;
     "/recuperar_contraseña",
     "/acerca",
     "/error",
-    "/Validar"    
+//    "/Validar"    
 })
 public class Controlador extends HttpServlet {
     @Override

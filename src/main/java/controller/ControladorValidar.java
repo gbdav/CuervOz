@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author david
  */
-@WebServlet(name = "ControladorValidar", urlPatterns = {"Validar"})
+@WebServlet(name = "ControladorValidar", urlPatterns = {"/Validar"})
 public class ControladorValidar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

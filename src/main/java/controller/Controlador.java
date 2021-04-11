@@ -35,7 +35,7 @@ import javax.servlet.http.HttpSession;
     "/mapa_sitio", 
     "/recuperar_contraseña",
     "/acerca",
-    "/Productos"
+    "/Productos",
 })
 public class Controlador extends HttpServlet {
     @Override
@@ -75,6 +75,9 @@ public class Controlador extends HttpServlet {
                     break;
                  case "/error":
                     userPath = "/error.html";
+                    break;
+                    case "/controlador":
+                    userPath = "/controlador";
                     break;
                 default:
                     case "/acerca":

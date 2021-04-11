@@ -138,13 +138,13 @@
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
                                 
-                                <form role="form" action="Validar" method="Post">
+                                <form role="form" action="Validar" method="POST">
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
-                                            <input class="form-control" required placeholder="Correo" type="email">
+                                            <input class="form-control" required placeholder="Correo" type="email" name="correo">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -152,11 +152,11 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                             </div>
-                                            <input class="form-control" required placeholder="Contraseña" type="password">
+                                            <input class="form-control" required placeholder="Contraseña" type="password" name="contraseña">
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary my-4">Iniciar sesión</button>
+                                        <button type="submit" value="aceptar" class="btn btn-primary my-4">Iniciar sesión</button>
                                     </div>
                                 </form>
                             </div>

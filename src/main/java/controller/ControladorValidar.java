@@ -8,6 +8,8 @@ package controller;
 import daos.DaoUsuarios;
 import dtos.DtoUsuarios;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,37 +25,31 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "ControladorValidar", urlPatterns = {"/Validar"})
 public class ControladorValidar extends HttpServlet {
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");       
         try {
+            response.setContentType("text/html;charset=UTF-8");
             String correo=request.getParameter("correo");
             String contraseña=request.getParameter("contraseña");
-            
             DaoUsuarios dao= new DaoUsuarios();
             DtoUsuarios usr = dao.read(correo);
-            
-            if(usr!= null){
-                if(usr.getContraseña().equals(contraseña)){
-                    
-                    HttpSession sesion = request.getSession();
-                    sesion.setAttribute("usuario", usr);
-                    response.sendRedirect("catalogo");
-                    
-                }else{
-                  response.sendRedirect("login");  
-                }
-            
-            }else{
-               response.sendRedirect("login");
-            }
-            
+             if(usr!= null){
+                           if(usr.getContraseña().equals(contraseña)){
+                                HttpSession sesion = request.getSession();
+                                sesion.setAttribute("correo", usr);
+                                response.sendRedirect("controlador");   
+                            }else{
+                               response.sendRedirect("login");
+                            }
+                    }else{
+                      response.sendRedirect("login");
+                    }
         } catch (Exception ex) {
             Logger.getLogger(ControladorValidar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+                    
+            
         
     }
 

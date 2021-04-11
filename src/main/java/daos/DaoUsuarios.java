@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package daos;
-
-import static daos.DaoProductos.PWD;
-import static daos.DaoProductos.URL;
-import static daos.DaoProductos.USER;
 import dtos.DtoUsuarios;
 import interfaces.IUsuarios;
 import java.sql.Connection;
@@ -16,9 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DaoUsuarios implements IUsuarios{
- static String URL="jdbc:mysql://localhost:3306/cuervoz?useSSL=false"; //La  conexion
+ static String URL="jdbc:mysql://localhost:3306/cuervos?useSSL=false"; //La  conexion
     static String USER="root";
-    static String PWD="123barcenas";
+    static String PWD="123456";
     
     Connection conn;
     ResultSet rs;
@@ -26,25 +22,23 @@ public class DaoUsuarios implements IUsuarios{
     String consulta;
     
     @Override
-    public DtoUsuarios read(String Usuarios) throws Exception {
-        
+    public DtoUsuarios read(String correo) throws Exception {
         DtoUsuarios dto = null; 
-        String consulta = "SELECT FROM usuarios WHERE LIKE ? ";
+        consulta = "SELECT *FROM usuarios WHERE correo like?";
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn =  DriverManager.getConnection(URL, USER, PWD);
         pst = conn.prepareStatement(consulta);
-         pst.setString(1, Usuarios);
+        pst.setString(1, correo);
         rs = pst.executeQuery();  
-       
        if(rs.next()){
-            DtoUsuarios tuser = new DtoUsuarios();
-            tuser.setIdUser(rs.getInt("iduser"));
-            tuser.setTipoUsu(rs.getInt("tipo_usu"));
-            tuser.setNombre(rs.getString("nombre"));
-            tuser.setAppaterno(rs.getString("appaterno"));
-            tuser.setApmaterno(rs.getString("apmaterno"));
-            tuser.setCorreo(rs.getString("correo"));
-            tuser.setContraseña(rs.getString("contraseña"));
+            dto = new DtoUsuarios();
+            dto.setIdUser(rs.getInt("iduser"));
+            dto.setTipoUsu(rs.getInt("tipo_usu"));
+            dto.setNombre(rs.getString("nombre"));
+            dto.setAppaterno(rs.getString("appaterno"));
+            dto.setApmaterno(rs.getString("apmaterno"));
+            dto.setCorreo(rs.getString("correo"));
+            dto.setContraseña(rs.getString("contraseña"));
         }
         
         conn.close();

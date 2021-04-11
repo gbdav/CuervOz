@@ -6,7 +6,9 @@
 package controller;
 
 import daos.DaoProductos;
+import daos.DaoUsuarios;
 import dtos.DtoProductos;
+import dtos.DtoUsuarios;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,15 +35,13 @@ import javax.servlet.http.HttpServletResponse;
     "/mapa_sitio", 
     "/recuperar_contraseña",
     "/acerca",
-    "/error",
-//    "/Validar"    
+    "/Productos"
 })
 public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
             String userPath = request.getServletPath();
-
             switch (userPath) {
                 case "/login":
                     userPath = "/login";
@@ -99,5 +100,28 @@ public class Controlador extends HttpServlet {
             } catch (IOException | ServletException ex) {} catch (Exception ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex); 
         }             
-    }   
+    } 
+    
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         String userPath = request.getServletPath();
+         String url;
+         
+             try {
+                 if(userPath == "/controlador"){
+                 DaoProductos dao = new  DaoProductos();
+                 List<DtoProductos> datos = dao.read();
+                 request.setAttribute("datos", datos);        
+                 //request.getRequestDispatcher("/WEB-INF/view/Productos.jsp").forward(request, response);
+                 userPath = "/Productos";
+                 }
+                 url = "/WEB-INF/view" + userPath + ".jsp";
+                 request.getRequestDispatcher(url).forward(request, response);
+             } catch (Exception ex) {
+                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }     
+
 }
+
+   

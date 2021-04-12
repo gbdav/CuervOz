@@ -15,6 +15,7 @@ public class DtoProductos {
     private  String descripcion;
     private  double costo;
     private  String imgprod;
+    private int stock;
 
     public int getIdprod(){
         return idprod;
@@ -49,6 +50,14 @@ public class DtoProductos {
     }
     public void setImgprod(String imgprod){
         this.imgprod = imgprod;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
     
 }

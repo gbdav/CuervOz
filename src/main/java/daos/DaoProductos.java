@@ -13,7 +13,7 @@ public class DaoProductos implements IProductos {
     
     static String URL="jdbc:mysql://localhost:3306/cuervos?useSSL=false"; //La  conexion
     static String USER="root";
-    static String PWD="123456";
+    static String PWD="1234";
 
     Connection conn;
     ResultSet rs;
@@ -36,6 +36,7 @@ public class DaoProductos implements IProductos {
             tProd.setDecripcion(rs.getString("descripcion"));
             tProd.setCosto(rs.getDouble("costo"));
             tProd.setImgprod(rs.getString("imgprod"));
+            tProd.setStock(rs.getInt("stock"));
             datos.add(tProd);
         }
         

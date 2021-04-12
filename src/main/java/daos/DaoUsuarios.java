@@ -12,9 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DaoUsuarios implements IUsuarios{
- static String URL="jdbc:mysql://localhost:3306/cuervos?useSSL=false"; //La  conexion
+ static String URL="jdbc:mysql://localhost:3306/cuervoz?useSSL=false"; //La  conexion
     static String USER="root";
-    static String PWD="123456";
+    static String PWD="1234";
     
     Connection conn;
     ResultSet rs;

@@ -32,27 +32,26 @@ public class ControladorValidar extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             String correo=request.getParameter("correo");
             String contraseña=request.getParameter("contraseña");
+            
             DaoUsuarios dao= new DaoUsuarios();
             DtoUsuarios usr = dao.read(correo);
+            //String cont = usr.getContraseña();
             int tipo = usr.getTipoUsu();
+            
              if(usr.getCorreo().equals(correo)){
-                           if(usr.getContraseña()== contraseña){
-                               if( tipo == 1 ){
+                           if(usr.getContraseña().equals(contraseña)){
+                               if( tipo == 1){
                                 HttpSession sesion = request.getSession();
                                 sesion.setAttribute("correo", usr);
                                 response.sendRedirect("controlador"); 
                                }else{
-                                //HttpSession sesion = request.getSession();
-                                //sesion.setAttribute("correo", usr);
                                 response.sendRedirect("catalogo"); 
                                }
                             }else{
                                response.sendRedirect("login");
-                               
                             }
                     }else{
-                     // response.sendRedirect("login");
-                      response.sendRedirect("ayuda");
+                       response.sendRedirect("login");
                     }
         } catch (Exception ex) {
             Logger.getLogger(ControladorValidar.class.getName()).log(Level.SEVERE, null, ex);

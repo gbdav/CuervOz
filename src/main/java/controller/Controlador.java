@@ -36,6 +36,7 @@ import javax.servlet.http.HttpSession;
     "/recuperar_contraseña",
     "/acerca",
     "/Productos",
+    "/contrrolador",
     "/error",
     "/compra",
     "/pago"
@@ -84,9 +85,12 @@ public class Controlador extends HttpServlet {
             case "/compra":
                 userPath = "/compra";
                 break;
-                 case "/controlador":
-                    userPath = "/controlador";
-                    break;
+            case "/controlador":
+                userPath = "/controlador";
+                break;
+            case "/Productos":
+                userPath = "/Productos";
+                break;    
             case "/pago":
                 userPath = "/pago";
                 break;
@@ -115,6 +119,27 @@ public class Controlador extends HttpServlet {
         } catch (IOException | ServletException ex) {
         } catch (Exception ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         String userPath = request.getServletPath();
+         String url;
+         
+             try {
+                 if(userPath == "/controlador"){
+                 DaoProductos dao = new  DaoProductos();
+                 List<DtoProductos> datos = dao.read();
+                 request.setAttribute("datos", datos);        
+                 //request.getRequestDispatcher("/WEB-INF/view/Productos.jsp").forward(request, response);
+                 userPath = "/Productos";
+                 }
+                 url = "/WEB-INF/view" + userPath + ".jsp";
+                 request.getRequestDispatcher(url).forward(request, response);
+             } catch (Exception ex) {
+                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }
 }
-
    

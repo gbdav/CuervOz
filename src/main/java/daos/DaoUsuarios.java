@@ -38,7 +38,7 @@ public class DaoUsuarios implements IUsuarios{
             dto.setAppaterno(rs.getString("appaterno"));
             dto.setApmaterno(rs.getString("apmaterno"));
             dto.setCorreo(rs.getString("correo"));
-            dto.setContraseña(rs.getString("contraseña"));
+            dto.setContrasenia(rs.getString("contrasenia"));
         }
         
         conn.close();

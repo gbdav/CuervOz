@@ -152,7 +152,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                             </div>
-                                            <input class="form-control" required placeholder="Contraseña" name="contraseña">
+                                            <input class="form-control" required placeholder="Contraseña" name="contrasenia">
                                         </div>
                                     </div>
                                     <div class="text-center">

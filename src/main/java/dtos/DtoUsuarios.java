@@ -11,7 +11,7 @@ public class DtoUsuarios {
     String appaterno;
     String apmaterno;
     String correo;
-    String contraseña;  
+    String contrasenia;  
 
     public int getIdUser() {
         return idUser;
@@ -61,11 +61,11 @@ public class DtoUsuarios {
         this.correo = correo;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 }

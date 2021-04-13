@@ -25,40 +25,45 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "ControladorValidar", urlPatterns = {"/Validar"})
 public class ControladorValidar extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             response.setContentType("text/html;charset=UTF-8");
-            String correo=request.getParameter("correo");
-            String contraseña=request.getParameter("contraseña");
-            
-            DaoUsuarios dao= new DaoUsuarios();
+            String correo = request.getParameter("correo");
+            String contrasenia = request.getParameter("contrasenia");
+
+            DaoUsuarios dao = new DaoUsuarios();
             DtoUsuarios usr = dao.read(correo);
-            //String cont = usr.getContraseña();
-            int tipo = usr.getTipoUsu();
             
-             if(usr.getCorreo().equals(correo)){
-                           if(usr.getContraseña().equals(contraseña)){
-                               if( tipo == 1){
-                                HttpSession sesion = request.getSession();
-                                sesion.setAttribute("correo", usr);
-                                response.sendRedirect("controlador"); 
-                               }else{
-                                response.sendRedirect("catalogo"); 
-                               }
-                            }else{
-                               response.sendRedirect("login");
-                            }
-                    }else{
-                       response.sendRedirect("login");
+            if (usr != null) {
+                if (usr.getCorreo().equals(correo)) {
+                    System.out.println("correo valido");
+                    if (usr.getContrasenia().equals(contrasenia)) {
+                        System.out.println("contraseña valida");
+                        if (usr.getTipoUsu() == 1) {
+                            HttpSession sesion = request.getSession();
+                            sesion.setAttribute("correo", usr);
+                            response.sendRedirect("controlador");
+                        } else {
+                            response.sendRedirect("catalogo");
+                        }
+                    } else {
+                        System.out.println("contraseña invalida");
+                        response.sendRedirect("login");
                     }
+                } else {
+                    System.out.println("correo invalido");
+                    response.sendRedirect("login");
+                }
+            } else {
+                System.out.println("usuario no existe");
+                response.sendRedirect("login");
+            }
         } catch (Exception ex) {
             Logger.getLogger(ControladorValidar.class.getName()).log(Level.SEVERE, null, ex);
         }
-                    
-            
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

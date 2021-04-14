@@ -34,7 +34,7 @@
                                 <img alt="Image placeholder" src="assets/img/brand/favicon.png">
                             </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold" style="color: rgb(94,114,228)">Juanito Nieves</span>
+                                <span class="mb-0 text-sm  font-weight-bold" style="color: rgb(94,114,228)"></span>
                             </div>
                         </div>
                     </a>

@@ -8,7 +8,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%
-    request.getAttribute("correo");
     List<DtoProductos> listaReq = (List)request.getAttribute("datos");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
@@ -83,24 +82,43 @@
                                 </div>
                                 <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
                                 </button>
-                                <table>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Descripcion</th>
-                                        <th>Costo</th>
+                                <table class="table table-hover" >
+                                    <tr class="text-white bg-dark">
                                         <th>Acciones</th>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Costo</th>
+                                        <th>Stock</th>
+                                        <th>Imagen</th>
+                                        <!--<th>Descripcion</th>-->
                                     </tr>
+                                    <% for(int i=0; i<listaReq.size();i++){ %>
                                     <tr>
-                                        <% for(int i=0; i<listaReq.size();i++){ %>
-                                        <td><%= listaReq.get(i).getNombre() %></td>
-                                        <td><%= listaReq.get(i).getDecripcion() %></td>
-                                        <td><%= listaReq.get(i).getCosto() %></td>
                                         <td>
-                                            <button class="btn btn-sm btn-info btn-edit">Editar</button>
-                                            <button class="btn btn-sm btn-danger btn-delete">Eliminar</button>
-                                        </td>
-                                        <%}%>
+                                            <button class="btn btn-sm btn-info btn-edit"
+                                            data-toggle="modal" 
+					    data-target="#modal-actualizar"
+                                            action="actualizar"
+                                            method="POST">
+                                            <I class="fas fa-edit"></I>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger btn-delete"
+                                            data-toggle="modal" 
+					    data-target="#modal-borrar"
+                                            action="borrar"
+                                            method="POST"
+                                            >
+                                            <I class="fas fa-trash" ></I>   
+                                            </button>
+                                        </td> 
+                                        <td><%= listaReq.get(i).getIdprod()%></td>
+                                        <td><%= listaReq.get(i).getNombre() %></td>
+                                        <td><%= listaReq.get(i).getCosto() %></td>
+                                        <td><%= listaReq.get(i).getStock() %></td>
+                                        <td><%= listaReq.get(i).getImgprod() %></td>
+                                        <!--<td><%= listaReq.get(i).getDecripcion() %></td> -->                                                                         
                                     </tr>
+                                    <%}%>
                                 </table>
                             </div>
                         </div>
@@ -111,7 +129,91 @@
 
                 </footer>
             </div>
+                                
         </div>
+            <!-- Modal ELIMINAR-->
+            <div class="modal fade" id="modal-borrar">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header" style="background-color: #FB9FB8 !important;">
+                    <h4 class="modal-title">Eliminar Producto</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    ¿Realmente quieres eliminar el Producto <STRONG><SPAN id="modal-nomproducto"></SPAN></STRONG>?
+                  </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><I class="fas fa-times-circle"></I>
+                            Cancelar</button>
+                    <button type="button" id="btn-borrar-confirma" class="btn btn-danger" data-dismiss="modal"><I class="fas fa-check-circle"></I>
+                            Borrar</button>
+                  </div>
+
+                </div>
+              </div>
+            </div> 
+            
+            <!-- Modal MODIFICAR / INSERTAR -->
+            <div class="modal fade" id="modal-actualizar">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header" style="background-color: #BCF7BC !important;">
+                    <h4 class="modal-title"><SPAN id="modal-accion"></SPAN> Producto</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <DIV class="row">
+                        
+                      <DIV class="form-group col col-md-3">
+                            <LABEL><STRONG>Nombre:</STRONG></LABEL>
+                            <INPUT type="text" class="form-control" id="modal-nombre">
+                      </DIV>
+
+                      <DIV class="form-group col col-md-3">
+                            <LABEL><STRONG>Descripcion:</STRONG></LABEL>
+                            <INPUT type="text" class="form-control" id="modal-descripcion">
+                      </DIV>
+
+                      <DIV class="form-group col col-md-6">
+                            <LABEL><STRONG>Costo:</STRONG></LABEL>
+                            <INPUT type="text" class="form-control" id="modal-costo">
+                      </DIV>
+                      
+                      <DIV class="form-group col col-md-3">
+                            <LABEL><STRONG>Direccion imagen:</STRONG></LABEL>
+                            <INPUT type="text" class="form-control" id="modal-imagen">
+                      </DIV>
+                        
+                      <DIV class="form-group col col-md-3">
+                            <LABEL><STRONG>Stock:</STRONG></LABEL>
+                            <INPUT type="text" class="form-control" id="modal-stock">
+                      </DIV>     
+
+                    </DIV>
+
+                  </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><I class="fas fa-times-circle"></I>
+                            Cancelar</button>
+                    <button type="button" id="btn-actualizar-confirma" class="btn btn-success" data-dismiss="modal"><I class="fas fa-check-circle"></I>
+                            Guardar</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
         <!-- Argon Scripts -->
         <!-- Core -->
         <script src="assets/vendor/jquery/dist/jquery.min.js"></script>

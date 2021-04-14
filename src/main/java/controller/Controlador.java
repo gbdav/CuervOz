@@ -36,10 +36,11 @@ import javax.servlet.http.HttpSession;
     "/recuperar_contraseña",
     "/acerca",
     "/Productos",
-    "/contrrolador",
+    "/crud",
     "/error",
     "/compra",
-    "/pago"
+    "/pago",
+    "insert",
 })
 public class Controlador extends HttpServlet {
 
@@ -85,9 +86,6 @@ public class Controlador extends HttpServlet {
             case "/compra":
                 userPath = "/compra";
                 break;
-            case "/controlador":
-                userPath = "/controlador";
-                break;
             case "/Productos":
                 userPath = "/Productos";
                 break;    
@@ -120,26 +118,45 @@ public class Controlador extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-         String userPath = request.getServletPath();
-         String url;
-         
-             try {
-                 if(userPath == "/controlador"){
+        
+        try {
+                 if(userPath == "/Productos"){
                  DaoProductos dao = new  DaoProductos();
                  List<DtoProductos> datos = dao.read();
                  request.setAttribute("datos", datos);        
                  //request.getRequestDispatcher("/WEB-INF/view/Productos.jsp").forward(request, response);
-                 userPath = "/Productos";
+                 //userPath = "/Productos";
                  }
                  url = "/WEB-INF/view" + userPath + ".jsp";
                  request.getRequestDispatcher(url).forward(request, response);
              } catch (Exception ex) {
                  Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+        
+        
+    }
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         String userPath = request.getServletPath();
+         String url;
+         try {
+                 if(userPath == "/Productos"){
+                 url = "/WEB-INF/view" + userPath + ".jsp";
+                 request.getRequestDispatcher(url).forward(request, response);
+                 }
+             } catch (Exception ex) {
+                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
      }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         
+             
+    }
 }
    

@@ -4,11 +4,13 @@
     Author     : ozvsx
 --%>
 
+<%@page import="dtos.DtoProductos"%>
 <%@page import="dtos.DtoEstados"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%
     List<DtoEstados> listaReq = (List) request.getAttribute("datos");
+    DtoProductos producto = (DtoProductos) request.getAttribute("producto");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -63,14 +65,14 @@
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <div class="col-lg-12 col-md-12">
-                                        <div class="card bg-secondary border-0 mb-0">
-                                            <div class="card-header bg-transparent">
-                                                <div class="text-muted text-center mt-2 mb-3"><h1>Ingrese sus datos</h1></div>
-                                            </div>
-                                            <div class="card-body px-lg-5 py-lg-5">
-                                                <a data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-lg text-white"><i class="fas fa-shopping-cart"></i>&nbsp;Ver carrito de compra</a>
-                                                <hr />
-                                                <form name="aForm" id="basic-form" class="form-auth-small" novalidate>
+                                        <form role="form" action="./pago" method="GET">
+                                            <div class="card bg-secondary border-0 mb-0">
+                                                <div class="card-header bg-transparent">
+                                                    <div class="text-muted text-center mt-2 mb-3"><h1>Ingrese sus datos</h1></div>
+                                                </div>
+                                                <div class="card-body px-lg-5 py-lg-5">
+                                                    <a data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-lg text-white"><i class="fas fa-shopping-cart"></i>&nbsp;Ver carrito de compra</a>
+                                                    <hr />
                                                     <div class="modal-header">
                                                         <h3 id="mdH" class="modal-title text-center align-middle"></h3>
                                                     </div>
@@ -79,19 +81,19 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-outline">
                                                                     <label class="text-danger"><i class="fas fa-asterisk fa-xs"></i></label><label class="form-label">&nbsp;Nombre</label>
-                                                                    <input type="text" id="nombre" name="nombre" class="form-control" required autocomplete="off" />
+                                                                    <input type="text" id="nombre" name="nombre" class="form-control" required  />
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-outline">
                                                                     <label class="text-danger"><i class="fas fa-asterisk fa-xs"></i></label><label class="form-label">&nbsp;Apellido 1</label>
-                                                                    <input type="text" id="ap1" name="ap1" class="form-control" required autocomplete="off" />
+                                                                    <input type="text" id="ap1" name="ap1" class="form-control" required  />
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-outline">
                                                                     <label class="form-label">&nbsp;Apellido 2</label>
-                                                                    <input type="email" id="ap2" name="ap2" class="form-control" required autocomplete="off" />
+                                                                    <input type="text" id="ap2" name="ap2" class="form-control" required  />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -100,13 +102,13 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-outline">
                                                                     <label class="text-danger"><i class="fas fa-asterisk fa-xs"></i></label><label class="form-label">&nbsp;Correo electronico</label>
-                                                                    <input type="text" id="mail" name="mail" class="form-control" required autocomplete="off" />
+                                                                    <input type="email" id="mail" name="mail" class="form-control" required  />
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-outline">
                                                                     <label class="text-danger"><i class="fas fa-asterisk fa-xs"></i></label><label class="form-label">&nbsp;Numero de telefono</label>
-                                                                    <input type="text" id="numero" name="numero" class="form-control" required autocomplete="off" />
+                                                                    <input type="text" id="numero" name="numero" class="form-control" required  />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -115,19 +117,19 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-outline">
                                                                     <label class="text-danger"><i class="fas fa-asterisk fa-xs"></i></label><label class="form-label">&nbsp;Calle</label>
-                                                                    <input type="text" id="mail" name="mail" class="form-control" required autocomplete="off" />
+                                                                    <input type="text" id="calle" name="calle" class="form-control" required  />
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-outline">
                                                                     <label class="text-danger"><i class="fas fa-asterisk fa-xs"></i></label><label class="form-label">&nbsp;Numero exterior</label>
-                                                                    <input type="text" id="noExt" name="noExt" class="form-control" required autocomplete="off" />
+                                                                    <input type="text" id="noExt" name="noExt" class="form-control" required  />
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-outline">
                                                                     <label class="form-label">&nbsp;Numero interior</label>
-                                                                    <input type="text" id="noInt" name="noInt" class="form-control" required autocomplete="off" />
+                                                                    <input type="text" id="noInt" name="noInt" class="form-control" required  />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -136,15 +138,15 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-outline">
                                                                     <label class="text-danger"><i class="fas fa-asterisk fa-xs"></i></label><label class="form-label">&nbsp;Colonia</label>
-                                                                    <input type="text" id="colonia" name="colonia" class="form-control" required autocomplete="off" />
+                                                                    <input type="text" id="colonia" name="colonia" class="form-control" required  />
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-outline">
                                                                     <label class="text-danger"><i class="fas fa-asterisk fa-xs"></i></label><label class="form-label">&nbsp;Estado</label>
-                                                                    <select class="form-control" id="estado" name="estado">
+                                                                    <select class="form-control" id="estado" name="estado" onchange="obtenerMunicipios(this.value);">
                                                                         <% for (int i = 0; i < listaReq.size(); i++) {%>
-                                                                            <option> <%= listaReq.get(i).getEstado()%> </option>
+                                                                        <option value="<%= listaReq.get(i).getId_estado()%>"> <%= listaReq.get(i).getEstado()%> </option>
                                                                         <%}%>
                                                                     </select>
                                                                 </div>
@@ -152,19 +154,21 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-outline">
                                                                     <label class="text-danger"><i class="fas fa-asterisk fa-xs"></i></label><label class="form-label">&nbsp;Municipio</label>
-                                                                    <select class="form-control" id="municipio" name="municipio"></select>
+                                                                    <select class="form-control" id="municipio" name="municipio">
+                                                                        <option value="1">hola</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <input type="hidden" id="idprod" name="idprod" value="<%= producto.getIdprod()%>"/>
                                                     <div class="modal-footer">
-                                                        <a id="btnCancelarE" onclick="reset()"  class="btn btn-outline-secondary"><I class="fas fa-times-circle"></I>&nbsp;Cancelar</a>
-                                                        <a href="./pago" class="btn btn-outline-success"><I class="fas fa-check-circle"></I>&nbsp;Continuar</a>
+                                                        <button id="btnCancelarE" onclick="reset()"  class="btn btn-outline-secondary"><I class="fas fa-times-circle"></I>&nbsp;Cancelar</button>
+                                                        <button class="btn btn-outline-success"><I class="fas fa-check-circle"></I>&nbsp;Continuar</button>
                                                     </div>
-                                                    <input type="hidden" id="idD" name="idD" />
-                                                </form>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -185,11 +189,11 @@
                             <div class="row">
                                 <div class="col-4">
                                     <label class="h5 text-muted">Nombre : </label>
-                                    <label class="h4 font-weight-bold">Siete Golpes</label>
+                                    <label class="h4 font-weight-bold"><%= producto.getNombre()%></label>
                                 </div>
                                 <div class="col-4">
                                     <label class="h5 text-muted">Precio : </label>
-                                    <label class="h4 text-monospace">$19999</label>
+                                    <label class="h4 text-monospace">$<%= producto.getCosto()%></label>
                                 </div>
                                 <div class="col-4">
                                     <label class="h5 text-muted">Cantidad : </label>
@@ -200,11 +204,10 @@
                             <div class="row">
                                 <div class="col-1"></div>
                                 <div class="col-10">
-                                    <label class="h5 font-italic text-break">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</label>
+                                    <label class="h5 font-italic text-break">"<%= producto.getDecripcion()%>"</label>
                                 </div>
                                 <div class="col-1"></div>
                             </div>
-                            <label id="prod" class="text-justify"></label>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -228,5 +231,6 @@
 <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 <!-- Argon JS -->
 <script src="assets/js/argon.js?v=1.2.0"></script>
+<script src="assets/js/compra.js"></script>
 </body>
 </html>

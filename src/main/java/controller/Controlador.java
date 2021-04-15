@@ -6,9 +6,12 @@
 package controller;
 
 import daos.DaoEstados;
+import daos.DaoMunicipios;
 import daos.DaoProductos;
 import daos.DaoUsuarios;
+import dtos.DtoCompra;
 import dtos.DtoEstados;
+import dtos.DtoMunicipios;
 import dtos.DtoProductos;
 import dtos.DtoUsuarios;
 import java.io.IOException;
@@ -95,7 +98,7 @@ public class Controlador extends HttpServlet {
             case "/pago":
                 userPath = "/pago";
                 break;
-           	case "/controlador":
+            case "/controlador":
                 userPath = "/controlador";
                 break;
             case "/acerca":
@@ -120,9 +123,57 @@ public class Controlador extends HttpServlet {
             }
             
             if ("/compra".equals(userPath)) {
-                DaoEstados dao = new DaoEstados();
-                List<DtoEstados> datos = dao.read();
-                request.setAttribute("datos", datos);
+                DaoEstados daoEstados = new DaoEstados();
+                List<DtoEstados> lstEstados = daoEstados.read();
+                String id = request.getParameter("idProducto");
+                DaoProductos daoProductos = new  DaoProductos();
+                DtoProductos producto = daoProductos.read(id);
+                
+                request.setAttribute("producto", producto);
+                request.setAttribute("datos", lstEstados);
+            }
+            if ("/pago".equals(userPath)) {
+                String id = request.getParameter("idprod");
+                DaoProductos daoProductos = new  DaoProductos();
+                DtoProductos producto = daoProductos.read(id);
+                request.setAttribute("producto", producto);
+                DtoCompra compra = new DtoCompra();
+                String nombre = request.getParameter("nombre");
+                compra.setNombre(nombre);
+                String ap1 = request.getParameter("ap1");
+                compra.setApellido1(ap1);
+                String ap2 = request.getParameter("ap2");
+                compra.setApellido2(ap2);
+                String correo = request.getParameter("mail");
+                compra.setCorreo(correo);
+                String numero = request.getParameter("numero");
+                compra.setNumero(numero);
+                String calle = request.getParameter("calle");
+                compra.setCalle(calle);
+                String noExt = request.getParameter("noExt");
+                compra.setNoExt(noExt);
+                String noInt = request.getParameter("noInt");
+                compra.setNoInt(noInt);
+                String colonia = request.getParameter("colonia");
+                compra.setColonia(colonia);
+                String idEstado = request.getParameter("estado");
+                compra.setId_estado(Integer.parseInt(idEstado));
+                String idMunicipio = request.getParameter("municipio");
+                compra.setId_municipio(Integer.parseInt(idMunicipio));
+                String idprod = request.getParameter("idprod");
+                compra.setIdprod(Integer.parseInt(idprod));
+                request.setAttribute("compra", compra);
+                DaoEstados daoEstados = new DaoEstados();
+                DtoEstados estado = daoEstados.read(idEstado);
+                request.setAttribute("estado", estado);
+                DaoMunicipios daoMunicipios = new DaoMunicipios();
+                DtoMunicipios mun = daoMunicipios.read(Integer.parseInt(idMunicipio));
+                request.setAttribute("municipio", mun);
+            }
+            if("/Productos".equals(userPath)){
+                 DaoProductos dao = new  DaoProductos();
+                 List<DtoProductos> datos = dao.read();
+                 request.setAttribute("datos", datos);
             }
             
             if(userPath == "/Productos"){
@@ -139,21 +190,19 @@ public class Controlador extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-//         String userPath = request.getServletPath();
-//         String url;
-//         try {
-//                 if(userPath == "/Productos"){
-//                 url = "/WEB-INF/view" + userPath + ".jsp";
-//                 request.getRequestDispatcher(url).forward(request, response);
-//                 }
-//             } catch (Exception ex) {
-//                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         String userPath = request.getServletPath();
+         String url;
+         try {
+                 if("/Productos".equals(userPath)){
+                 url = "/WEB-INF/view" + userPath + ".jsp";
+                 request.getRequestDispatcher(url).forward(request, response);
+                 }
+             } catch (IOException | ServletException ex) {
+                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
      }
     
     @Override

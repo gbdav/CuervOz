@@ -4,25 +4,24 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <span class="col-2"></span>
-                            <a href="./" class="col col-2">
-                                <span class="shortcut-media avatar rounded-circle bg-blue">
-                                    <i class="fas fa-home"></i>
-                                </span>
-                                <small class="text-darker">Home</small>   
-                            </a>
-                            <a href="./login" class="col col-2">
-                                <span class="shortcut-media avatar rounded-circle bg-blue">
-                                    <i class="fas fa-user"></i>
-                                </span>
-                                <small class="text-darker">Login</small>
-                            </a>
-                            <a href="./buzon" class="col col-2">
-                                <span class="shortcut-media avatar rounded-circle bg-blue">
-                                    <i class="fas fa-mail-bulk"></i>
-                                </span>
-                                <small class="text-darker">Buzon</small>
-                            </a>
-
+            <a href="./login" class="col col-2">
+                <span class="shortcut-media avatar rounded-circle bg-blue">
+                    <i class="fas fa-user"></i>
+                </span>
+                <small class="text-darker">Login</small>
+            </a>
+            <a href="./buzon" class="col col-2">
+                <span class="shortcut-media avatar rounded-circle bg-blue">
+                    <i class="fas fa-mail-bulk"></i>
+                </span>
+                <small class="text-darker">Buzon</small>
+            </a>
+            <a href="./catalogo" class="col col-2">
+                <span class="shortcut-media avatar rounded-circle bg-blue">
+                    <i class="fas fa-boxes"></i>
+                </span>
+                <small class="text-darker">Catalogo</small>
+            </a>
 
             <!-- Navbar links -->
             <span class="col-2"></span>

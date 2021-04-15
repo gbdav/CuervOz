@@ -3,7 +3,16 @@
     Created on : 16/02/2021, 03:32:04 PM
     Author     : ozvsx
 --%>
-
+<%@page import="dtos.DtoMunicipios"%>
+<%@page import="dtos.DtoEstados"%>
+<%@page import="dtos.DtoCompra"%>
+<%@page import="dtos.DtoProductos"%>
+<%
+    DtoProductos producto = (DtoProductos) request.getAttribute("producto");
+    DtoCompra compra = (DtoCompra) request.getAttribute("compra");
+    DtoEstados estado = (DtoEstados) request.getAttribute("estado");
+    DtoMunicipios municipio = (DtoMunicipios) request.getAttribute("municipio");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -62,74 +71,135 @@
                                                 <div class="text-muted text-center mt-2 mb-3"><h1>Forma de pago</h1></div>
                                             </div>
                                             <div class="card-body px-lg-5 py-lg-5">
-                                                <form name="aForm" id="basic-form" method="POST" class="form-auth-small" novalidate>
+                                                <form role="form" action="./pago" method="GET">
                                                     <div class="modal-header">
-                                                        <h3 id="mdH" class="modal-title text-center align-middle"></h3>
+                                                        <a data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-lg text-white"><i class="fas fa-shopping-cart"></i>&nbsp;Ver detalles de la compra</a>
+                                                        <hr />
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="row justify-content-center mb-4 radio-group">
+                                                        <div class="row">
                                                             <div class="col-4">
-                                                                <div class='radio mx-auto' data-value="visa"> <img class="fit-image" src="https://i.imgur.com/OdxcctP.jpg" width="105px" height="55px"> </div>
+                                                                <img class="fit-image mx-7" src="https://i.imgur.com/OdxcctP.jpg" width="105px" height="55px">
                                                             </div>
                                                             <div class="col-4">
-                                                                <div class='radio mx-auto' data-value="master"> <img class="fit-image" src="https://i.imgur.com/WIAP9Ku.jpg" width="105px" height="55px"> </div>
+                                                                <img class="fit-image mx-7" src="https://i.imgur.com/WIAP9Ku.jpg" width="105px" height="55px">
                                                             </div>
                                                             <div class="col-4">
-                                                                <div class='radio mx-auto' data-value="paypal"> <img class="fit-image" src="https://i.imgur.com/cMk1MtK.jpg" width="105px" height="55px"> </div>
-                                                            </div> <br>
+                                                                <img class="fit-image mx-7" src="https://i.imgur.com/cMk1MtK.jpg" width="105px" height="55px">
+                                                            </div>
                                                         </div>
                                                         <hr />
                                                         <div class="row justify-content-center">
                                                             <div class="col-2"></div>
- 
-                                                                    <div class="col-4">
-                                                                        <div class="form-outline">
-                                                                            <label class="form-label">Nombre</label>
-                                                                            <input class="form-control" type="text" name="Name" placeholder="John Doe">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4">
-                                                                        <div class="form-outline">
-                                                                            <label class="form-label">Numero</label>
-                                                                            <input class="form-control" type="text" id="cr_no" name="card-no" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19">
-                                                                        </div>
-                                                                    </div>
-                                                   
-                                           
+
+                                                            <div class="col-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label">Nombre</label>
+                                                                    <input class="form-control" type="text" name="name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label">Numero</label>
+                                                                    <input class="form-control" type="text" id="cr_no" name="card-no" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19">
+                                                                </div>
+                                                            </div>
+
+
                                                             <div class="col-2"></div>
                                                         </div>
                                                         <br />
                                                         <div class="row justify-content-center">
                                                             <div class="col-2"></div>
-               
-                                                                    <div class="col-4">
-                                                                        <div class="form-outline">
-                                                                            <label class="form-label">Fecha de vencimiento</label>
-                                                                            <input class="form-control" type="text" id="exp" name="expdate" placeholder="MM/YY" minlength="5" maxlength="5">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4">
-                                                                        <div class="form-outline">
-                                                                            <label class="form-label">CVV</label>
-                                                                            <input class="form-control" type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="3">
-                                                                        </div>
-                                                                    </div>
-                                           
+
+                                                            <div class="col-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label">Fecha de vencimiento</label>
+                                                                    <input class="form-control" type="text" id="exp" name="expdate" placeholder="MM/YY" minlength="5" maxlength="5">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label">CVV</label>
+                                                                    <input class="form-control" type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="3">
+                                                                </div>
+                                                            </div>
+
                                                             <div class="col-2"></div>
 
                                                         </div>
                                                     </div>
+                                                    <input type="hidden" name="estado" value="<%= estado.getId_estado()%>"/>
+                                                    <input type="hidden" name="municipio" value="<%= municipio.getId_municipio()%>"/>
+                                                    <input type="hidden" name="ap1" value="value="<%= compra.getApellido1() %>"/>
+                                                    <input type="hidden" name="ap2" value="value="<%= compra.getApellido2()%>"/>
+                                                    <input type="hidden" name="calle" value="value="<%= compra.getCalle()%>"/>
+                                                    <input type="hidden" name="colonia" value="value="<%= compra.getColonia()%>"/>
+                                                    <input type="hidden" name="correo" value="value="<%= compra.getCorreo()%>"/>
+                                                    <input type="hidden" name="noExt" value="value="<%= compra.getNoExt() %>"/>
+                                                    <input type="hidden" name="noInt" value="value="<%= compra.getNoInt()%>"/>
+                                                    <input type="hidden" name="nombre" value="value="<%= compra.getNombre()%>"/>
+                                                    <input type="hidden" name="numero" value="value="<%= compra.getNumero()%>"/>
+                                                    <input type="hidden" name="idprod" value="value="<%= producto.getIdprod()%>"/>
                                                     <div class="modal-footer">
-                                                        <a id="btnCancelarE" onclick="reset()" class="btn btn-outline-secondary"><I class="fas fa-times-circle"></I>&nbsp;Cancelar</a>
-                                                        <a href="./catalogo" class="btn btn-outline-success"><I class="fas fa-check-circle"></I>&nbsp;Continuar</a>
+                                                        <button id="btnCancelarE" onclick="reset()" class="btn btn-outline-secondary"><I class="fas fa-times-circle"></I>&nbsp;Cancelar</button>
+                                                        <button href="./catalogo" class="btn btn-outline-success"><I class="fas fa-check-circle"></I>&nbsp;Continuar</button>
                                                     </div>
-                                                    <input type="hidden" id="idD" name="idD" />
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="h5 text-muted">Nombre : </label>
+                                    <label class="h4 font-weight-bold"><%= producto.getNombre()%></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="h5 text-muted">Precio : </label>
+                                    <label class="h4 text-monospace">$<%= producto.getCosto()%></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="h5 text-muted">Cantidad : </label>
+                                    <label class="h4 text-monospace">1</label>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="h5 text-muted">Cliente : </label>
+                                    <label class="h4 font-weight-bold"><%= compra.getNombre()%> <%= compra.getApellido1()%> <%= compra.getApellido2()%></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="h5 text-muted">Direccion : </label>
+                                    <label class="h4 font-weight-bold">Calle <%= compra.getCalle()%> #<%= compra.getNoExt()%>_<%= compra.getNoInt()%>, Colonia <%= compra.getColonia()%>, <%= municipio.getMunicipio()%>, <%= estado.getEstado()%></label>
+                                </div>
+                            </div>
+                            <div class="col-1"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>

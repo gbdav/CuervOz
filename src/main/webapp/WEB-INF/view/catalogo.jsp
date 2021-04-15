@@ -103,21 +103,24 @@
                                                         </div>
                                                         <img class="img-fluid" src="<%= listaReq.get(i).getImgprod()%>">
                                                         <div class="card-body">
+                                                            <h3 class="mb-0">$<%= listaReq.get(i).getCosto()%></h3>
+                                                            <br />
                                                             <span style="display:none;" id="<%= listaReq.get(i).getIdprod()%>" class="text-monospace text-danger">Stock disponible <span class="font-weight-bold" ><%= listaReq.get(i).getStock()%></span></span>
                                                         </div>
                                                         <div class="card-footer border-0">
                                                             <div class="row align-items-center">
-                                                                <div class="col">
-                                                                    <h3 class="mb-0">$<%= listaReq.get(i).getCosto()%></h3>
-                                                                </div>
                                                                 <div class="col text-right">
                                                                     <a onclick="abrirDetalles('<%= listaReq.get(i).getDecripcion()%>');" data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-secondary">Detalles</a>
                                                                 </div>
                                                                 <div class="col text-right">
+                                                                    <% if(listaReq.get(i).getStock() > 0) {%>
                                                                     <form role="form" action="./compra" method="GET">
                                                                         <input type="hidden" name="idProducto" value="<%= listaReq.get(i).getIdprod()%>">
                                                                         <button class="btn btn-sm btn-primary">Comprar</button>
                                                                     </form>
+                                                                    <%}else{%>
+                                                                    <span class="btn btn-sm btn-light">No disponible</span>
+                                                                    <%}%>
                                                                 </div>
                                                             </div>
                                                         </div>

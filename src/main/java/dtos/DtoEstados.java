@@ -1,4 +1,3 @@
-
 package dtos;
 
 public class DtoEstados {

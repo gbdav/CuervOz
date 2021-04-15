@@ -36,14 +36,14 @@ import javax.servlet.http.HttpSession;
     "/registrar",
     "/buzon",
     "/mapa_sitio",
-    "/recuperar_contraseña",
+    "/recuperar",
     "/acerca",
     "/Productos",
     "/crud",
     "/error",
     "/compra",
     "/pago",
-    "insert",
+//    "insert",
 })
 public class Controlador extends HttpServlet {
 
@@ -80,8 +80,8 @@ public class Controlador extends HttpServlet {
             case "/tablas":
                 userPath = "/tablas";
                 break;
-            case "/recuperar_contraseña":
-                userPath = "/recuperar_contraseña";
+            case "/recuperar":
+                userPath = "/recuperar";
                 break;
             case "/error":
                 userPath = "/error.html";
@@ -124,6 +124,15 @@ public class Controlador extends HttpServlet {
                 List<DtoEstados> datos = dao.read();
                 request.setAttribute("datos", datos);
             }
+            
+            if(userPath == "/Productos"){
+                DaoProductos dao = new  DaoProductos();
+                List<DtoProductos> datos = dao.read();
+                request.setAttribute("datos", datos);        
+                //request.getRequestDispatcher("/WEB-INF/view/Productos.jsp").forward(request, response);
+                //userPath = "/Productos";
+            }
+            
              request.getRequestDispatcher(url).forward(request, response);
         } catch (IOException | ServletException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -131,37 +140,20 @@ public class Controlador extends HttpServlet {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        try {
-                 if(userPath == "/Productos"){
-                 DaoProductos dao = new  DaoProductos();
-                 List<DtoProductos> datos = dao.read();
-                 request.setAttribute("datos", datos);        
-                 //request.getRequestDispatcher("/WEB-INF/view/Productos.jsp").forward(request, response);
-                 //userPath = "/Productos";
-                 }
-                 url = "/WEB-INF/view" + userPath + ".jsp";
-                 request.getRequestDispatcher(url).forward(request, response);
-             } catch (Exception ex) {
-                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        
-        
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String userPath = request.getServletPath();
-         String url;
-         try {
-                 if(userPath == "/Productos"){
-                 url = "/WEB-INF/view" + userPath + ".jsp";
-                 request.getRequestDispatcher(url).forward(request, response);
-                 }
-             } catch (Exception ex) {
-                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//         String userPath = request.getServletPath();
+//         String url;
+//         try {
+//                 if(userPath == "/Productos"){
+//                 url = "/WEB-INF/view" + userPath + ".jsp";
+//                 request.getRequestDispatcher(url).forward(request, response);
+//                 }
+//             } catch (Exception ex) {
+//                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+//        }
      }
     
     @Override

@@ -35,7 +35,7 @@ public class ControladorValidar extends HttpServlet {
 
             DaoUsuarios dao = new DaoUsuarios();
             DtoUsuarios usr = dao.read(correo);
-            
+
             if (usr != null) {
                 if (usr.getCorreo().equals(correo)) {
                     System.out.println("correo valido");
@@ -46,19 +46,27 @@ public class ControladorValidar extends HttpServlet {
                             sesion.setAttribute("correo", usr);
                             response.sendRedirect("Productos");
                         } else {
-                            response.sendRedirect("catalago");
+                            response.sendRedirect("catalogo");
                         }
                     } else {
-                        System.out.println("contraseña invalida");
-                        response.sendRedirect("login");
+                        request.setAttribute("formError", Boolean.TRUE);
+//                        System.out.println("contraseña invalida");
+//                        response.sendRedirect("login");
+                        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
                     }
                 } else {
-                    System.out.println("correo invalido");
-                    response.sendRedirect("login");
+//                    System.out.println("correo invalido");
+                    request.setAttribute("formError", Boolean.TRUE);
+//                    response.sendRedirect("login");
+                    request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
                 }
             } else {
-                System.out.println("usuario no existe");
-                response.sendRedirect("login");
+//                System.out.println("usuario no existe");
+//                response.sendRedirect("login");
+//                    System.out.println("correo invalido");
+                request.setAttribute("formError", Boolean.TRUE);
+//                    response.sendRedirect("login");
+                request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
             }
         } catch (Exception ex) {
             Logger.getLogger(ControladorValidar.class.getName()).log(Level.SEVERE, null, ex);

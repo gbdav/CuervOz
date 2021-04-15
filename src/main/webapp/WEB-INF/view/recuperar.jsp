@@ -3,7 +3,9 @@
     Created on : 17 feb 2021, 22:02:42
     Author     : david
 --%>
-
+<%
+    boolean usrNull = Boolean.TRUE == request.getAttribute("usrNull");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -122,37 +124,56 @@
                     <div class="col-md-4 col-md-offset-4">
                         <div class="card bg-secondary border-0 mb-0">
                             <div class="panel panel-default">
-                            <div class="panel-body">
-                              <div class="text-center">
-                                <h3><i class="fa fa-lock fa-4x"></i></h3>
-                                <h2 class="text-center">Forgot Password?</h2>
-                                <p>You can reset your password here.</p>
                                 <div class="panel-body">
+                                    <div class="text-center">
+                                        <h3><i class="fa fa-lock fa-4x"></i></h3>
+                                        <h2 class="text-center">Forgot Password?</h2>
+                                        <p>You can reset your password here.</p>
+                                        <div class="panel-body">
+                                            <%
+                                                //Remove '@' 
+                                                if (usrNull == true) {
+                                            %>
+                                            <div>Usuario no existe :c</div>
+                                            <% }
+                                            %>
+                                            <form role="form" method="POST" action="validaCorreoRecuperar">
 
-                                  <form id="register-form" action="./login">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                                        <input id="email" name="correo" required placeholder="email address" class="form-control"  type="email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
+                                                </div>
 
-                                    <div class="form-group">
-                                      <div class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                        <input id="email" required placeholder="email address" class="form-control"  type="email">
-                                      </div>
+                                                <input type="hidden" class="hide" name="token" id="token" value=""> 
+                                            </form>
+
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
-                                    </div>
-
-                                    <input type="hidden" class="hide" name="token" id="token" value=""> 
-                                  </form>
-
                                 </div>
-                              </div>
                             </div>
-                          </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!--        <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+                    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+                        <div class="toast-header">
+                            <strong class="mr-auto">Cuervoz</strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="toast-body h2">
+                            <i id="toast-icon"></i>&nbsp;Bienvenido, <span id="toast-mssg"></span>
+                        </div>
+                    </div>
+                </div>-->
         <!-- Footer -->
         <footer class="py-5" id="footer-main">
 

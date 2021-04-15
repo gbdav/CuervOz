@@ -3,7 +3,15 @@
     Created on : 16 feb. 2021, 12:44:26
     Author     : luisr
 --%>
-
+<%
+    boolean mailSent = Boolean.TRUE == request.getAttribute("mailSent");
+    boolean formError = Boolean.TRUE == request.getAttribute("formError");
+    System.out.println("mail s");
+    System.out.println(mailSent);
+    System.out.println("formError");
+    System.out.println(formError);
+    //System.out.println(mailSent);
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--
 =========================================================
@@ -137,14 +145,32 @@
                                 <div class="text-muted text-center mt-2 mb-3"><h1>Iniciar sesión</h1></div>
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
+
+                                <%
+                                    if (mailSent == true) {
+                                %>
+                                <div>
+                                    Se a enviado un correo!
+                                </div>
+                                <% }
+                                %>
                                 
-                                <form role="form" action="catalogo">
+                                <%
+                                    if (formError == true) {
+                                %>
+                                <div>
+                                    El usuario o contraseña es incorrecto
+                                </div>
+                                <% }
+                                %>
+                                
+                                <form role="form" action="Validar" method="POST">
                                     <div class="form-group mb-3">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
-                                            <input class="form-control" required placeholder="Correo" type="email">
+                                            <input class="form-control" required placeholder="Correo" type="email" name="correo">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -152,18 +178,18 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                             </div>
-                                            <input class="form-control" required placeholder="Contraseña" type="password">
+                                            <input class="form-control" required placeholder="Contraseña" name="contrasenia">
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary my-4">Iniciar sesión</button>
+                                        <button type="submit" value="aceptar" class="btn btn-primary my-4">Iniciar sesión</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-6">
-                                <a href="./recuperar_contraseña" class="text-light"><small>¿Olvidaste tu contraseña?</small></a>
+                                <a href="./recuperar" class="text-light"><small>¿Olvidaste tu contraseña?</small></a>
                             </div>
                             <div class="col-6 text-right">
                                 <a href="./registrar" class="text-light"><small>Crear una nueva cuenta</small></a>
@@ -179,13 +205,13 @@
         </footer>
         <!-- Argon Scripts -->
         <!-- Core -->
-        <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/vendor/js-cookie/js.cookie.js"></script>
-        <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-        <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+        <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
+        <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
         <!-- Argon JS -->
-        <script src="assets/js/argon.js?v=1.2.0"></script>
+        <script src=".assets/js/argon.js"></script>
     </body>
 
 </html>

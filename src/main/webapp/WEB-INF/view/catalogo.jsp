@@ -7,10 +7,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%
-    List<DtoProductos> listaReq = (List)request.getAttribute("datos");
+    List<DtoProductos> listaReq = (List) request.getAttribute("datos");
     //Object listaReq = request.getAttribute("lista");
     //List listaReq = (List)request.getAttribute("datos");
-    
+
     // for( int i=0; i<listaReq.size(); i++ ){
     //     System.out.print("i: " + i);
     //     System.out.print( listaReq.get(i).getIdprod() );
@@ -36,18 +36,14 @@
         <link rel="stylesheet" href="./assets/vendor/nucleo/css/nucleo.css" type="text/css">
         <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
         <!-- Argon CSS -->
+        <link rel="stylesheet" href="./assets/css/bootstrap/bootstrap.min.css" type="text/css"/>
         <link rel="stylesheet" href="./assets/css/argon.css?v=1.2.0" type="text/css">
         <link rel="stylesheet" href="./assets/css/bootstrap/bootstrap-grid.css" type="text/css"/>
-        <link rel="stylesheet" href="./assets/css/bootstrap/bootstrap-grid.css" type="text/css">
         <link rel="stylesheet" href="./assets/scss/core/shortcuts/_shortcut.scss" type="text/css"/>
-        <link rel="stylesheet" href="./assets/scss/core/shortcuts/_shortcut.scss" type="text/css">
         <link rel="stylesheet" href="./assets/scss/core/dropdowns/_dropdown.scss" type="text/css"/>
-        <link rel="stylesheet" href="./assets/scss/core/dropdowns/_dropdown.scss" type="text/css">
         <link rel="stylesheet" href="./assets/scss/core/utilities/_text.scss" type="text/css"/>
-        <link rel="stylesheet" href="./assets/scss/core/utilities/_text.scss" type="text/css">
-        
-    </head>
 
+    </head>
     <body>
         <!-- Sidenav -->
         <%@ include file="./sideNav.jspf" %>
@@ -97,30 +93,39 @@
                                         <div class="container">
                                             <div id="items" class="row">
                                                 <!--aqui-->
-                                                <% for(int i=0; i<listaReq.size();i++){ %>
-                                                    <div class="productos col-md-4">
-                                                        <div class="card mb-4 box-shadow">
-                                                            <div class="card-header border-0">
-                                                                <div class="row align-items-center">
-                                                                    <h3 class="m-0"><%= listaReq.get(i).getNombre() %></h3>
+                                                <% for (int i = 0; i < listaReq.size(); i++) {%>
+                                                <div class="productos col-md-4" onmouseenter="mostrarStock('<%= listaReq.get(i).getIdprod()%>');" onmouseleave="quitarStock('<%= listaReq.get(i).getIdprod()%>');">
+                                                    <div class="card mb-4 box-shadow item">
+                                                        <div class="card-header border-0">
+                                                            <div class="row align-items-center">
+                                                                <h3 class="m-0"><%= listaReq.get(i).getNombre()%></h3>
+                                                            </div>
+                                                        </div>
+                                                        <img class="img-fluid" src="<%= listaReq.get(i).getImgprod()%>">
+                                                        <div class="card-body">
+                                                            <h3 class="mb-0">$<%= listaReq.get(i).getCosto()%></h3>
+                                                            <br />
+                                                            <span style="display:none;" id="<%= listaReq.get(i).getIdprod()%>" class="text-monospace text-danger">Stock disponible <span class="font-weight-bold" ><%= listaReq.get(i).getStock()%></span></span>
+                                                        </div>
+                                                        <div class="card-footer border-0">
+                                                            <div class="row align-items-center">
+                                                                <div class="col text-right">
+                                                                    <a onclick="abrirDetalles('<%= listaReq.get(i).getDecripcion()%>');" data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-secondary">Detalles</a>
                                                                 </div>
-                                                            </div>
-                                                                <img class="img-fluid" src="<%= listaReq.get(i).getImgprod() %>">
-                                                            <div class="card-body">
-                                                                <p class="card-text"><%= listaReq.get(i).getDecripcion() %></p>
-                                                            </div>
-                                                            <div class="card-footer border-0">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col">
-                                                                        <h3 class="mb-0"><%= listaReq.get(i).getCosto() %></h3>
-                                                                    </div>
-                                                                    <div class="col text-right">
-                                                                        <a href="error" class="btn btn-sm btn-primary">Comprar</a>
-                                                                    </div>
+                                                                <div class="col text-right">
+                                                                    <% if(listaReq.get(i).getStock() > 0) {%>
+                                                                    <form role="form" action="./compra" method="GET">
+                                                                        <input type="hidden" name="idProducto" value="<%= listaReq.get(i).getIdprod()%>">
+                                                                        <button class="btn btn-sm btn-primary">Comprar</button>
+                                                                    </form>
+                                                                    <%}else{%>
+                                                                    <span class="btn btn-sm btn-light">No disponible</span>
+                                                                    <%}%>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
                                                 <%}%>
                                             </div>
                                         </div>
@@ -128,6 +133,37 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label id="desc" class="text-justify"></label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+                    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+                        <div class="toast-header">
+                            <strong class="mr-auto">Cuervoz</strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="toast-body h2">
+                            <i id="toast-icon"></i>&nbsp;Bienvenido, <span id="toast-mssg"></span>
                         </div>
                     </div>
                 </div>
@@ -139,13 +175,14 @@
         </div>
         <!-- Argon Scripts -->
         <!-- Core -->
-        <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/vendor/js-cookie/js.cookie.js"></script>
-        <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-        <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+        <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="./assets/js/catalogo.js"></script>
+        <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
+        <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
         <!-- Argon JS -->
-        <script src="assets/js/argon.js"></script>
+        <script src=".assets/js/argon.js"></script>
     </body>
 
 </html>

@@ -5,11 +5,14 @@
  */
 package controller;
 
+import daos.DaoEstados;
 import daos.DaoProductos;
 import daos.DaoUsuarios;
+import dtos.DtoEstados;
 import dtos.DtoProductos;
 import dtos.DtoUsuarios;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -92,11 +95,14 @@ public class Controlador extends HttpServlet {
             case "/pago":
                 userPath = "/pago";
                 break;
-            default:
+           	case "/controlador":
+                userPath = "/controlador";
+                break;
             case "/acerca":
                 userPath = "/acerca";
                 break;
-
+            default:
+                userPath = "/error.html";           
         }
         String url;
         if ("/error.html".equals(userPath)) {
@@ -104,17 +110,23 @@ public class Controlador extends HttpServlet {
         } else {
             url = "/WEB-INF/view" + userPath + ".jsp";
         }
+        
         try {
-            if (userPath == "/catalogo") {
+            System.out.println(url);
+            if ("/catalogo".equals(userPath)) {
                 DaoProductos dao = new DaoProductos();
                 List<DtoProductos> datos = dao.read();
-                /*datos.forEach(dto -> {
-                        System.out.println("id: " + dto.getIdprod());
-                    });*/
                 request.setAttribute("datos", datos);
             }
-            request.getRequestDispatcher(url).forward(request, response);
+            
+            if ("/compra".equals(userPath)) {
+                DaoEstados dao = new DaoEstados();
+                List<DtoEstados> datos = dao.read();
+                request.setAttribute("datos", datos);
+            }
+             request.getRequestDispatcher(url).forward(request, response);
         } catch (IOException | ServletException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }

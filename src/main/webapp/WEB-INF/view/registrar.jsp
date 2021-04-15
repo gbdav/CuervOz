@@ -216,7 +216,7 @@
       
    try{
    Class.forName("com.mysql.cj.jdbc.Driver");
-   cnx=DriverManager.getConnection("jdbc:mysql://localhost:3306/cuervos?useSSL=fals?euser=root&paswword=123456");
+   cnx=DriverManager.getConnection("jdbc:mysql://localhost:3306/cuervoz?useSSL=fals?euser=root&paswword=123456");
    
    sta=cnx.createStatement();
    

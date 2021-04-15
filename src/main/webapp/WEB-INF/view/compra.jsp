@@ -4,7 +4,13 @@
     Author     : ozvsx
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="dtos.DtoEstados"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%
+    List<DtoEstados> listaReq = (List) request.getAttribute("datos");
+%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -136,7 +142,11 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-outline">
                                                                     <label class="text-danger"><i class="fas fa-asterisk fa-xs"></i></label><label class="form-label">&nbsp;Estado</label>
-                                                                    <select class="form-control" id="estado" name="estado"></select>
+                                                                    <select class="form-control" id="estado" name="estado">
+                                                                        <% for (int i = 0; i < listaReq.size(); i++) {%>
+                                                                            <option> <%= listaReq.get(i).getEstado()%> </option>
+                                                                        <%}%>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">

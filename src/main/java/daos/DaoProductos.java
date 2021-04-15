@@ -13,7 +13,7 @@ public class DaoProductos implements IProductos {
     
     static String URL="jdbc:mysql://localhost:3306/cuervoz?useSSL=false"; //La  conexion
     static String USER="root";
-    static String PWD="123barcenas";
+    static String PWD="1234";
 
     Connection conn;
     ResultSet rs;
@@ -46,7 +46,7 @@ public class DaoProductos implements IProductos {
     
     public DtoProductos read(String correo) throws Exception {
         DtoProductos dto = null; 
-        consulta = "SELECT *FROM producto WHERE idprod like?";
+        consulta = "SELECT * FROM producto WHERE idprod like?";
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn =  DriverManager.getConnection(URL, USER, PWD);
         pst = conn.prepareStatement(consulta);
@@ -54,7 +54,7 @@ public class DaoProductos implements IProductos {
         rs = pst.executeQuery();  
        if(rs.next()){
             dto = new DtoProductos();
-            dto.setIdprod(rs.getInt("iduser"));
+            dto.setIdprod(rs.getInt("idprod"));
             dto.setNombre(rs.getString("nombreprod"));
             dto.setDecripcion(rs.getString("descripcion"));
             dto.setCosto(rs.getDouble("costo"));

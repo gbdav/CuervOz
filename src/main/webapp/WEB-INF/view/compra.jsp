@@ -4,11 +4,13 @@
     Author     : ozvsx
 --%>
 
+<%@page import="dtos.DtoProductos"%>
 <%@page import="dtos.DtoEstados"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%
     List<DtoEstados> listaReq = (List) request.getAttribute("datos");
+    DtoProductos producto = (DtoProductos) request.getAttribute("producto");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -185,11 +187,11 @@
                             <div class="row">
                                 <div class="col-4">
                                     <label class="h5 text-muted">Nombre : </label>
-                                    <label class="h4 font-weight-bold">Siete Golpes</label>
+                                    <label class="h4 font-weight-bold"><%= producto.getNombre()%></label>
                                 </div>
                                 <div class="col-4">
                                     <label class="h5 text-muted">Precio : </label>
-                                    <label class="h4 text-monospace">$19999</label>
+                                    <label class="h4 text-monospace">$<%= producto.getCosto()%></label>
                                 </div>
                                 <div class="col-4">
                                     <label class="h5 text-muted">Cantidad : </label>
@@ -200,7 +202,7 @@
                             <div class="row">
                                 <div class="col-1"></div>
                                 <div class="col-10">
-                                    <label class="h5 font-italic text-break">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</label>
+                                    <label class="h5 font-italic text-break">"<%= producto.getDecripcion()%>"</label>
                                 </div>
                                 <div class="col-1"></div>
                             </div>

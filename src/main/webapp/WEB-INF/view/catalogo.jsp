@@ -103,7 +103,7 @@
                                                         </div>
                                                         <img class="img-fluid" src="<%= listaReq.get(i).getImgprod()%>">
                                                         <div class="card-body">
-                                                            <span id="<%= listaReq.get(i).getIdprod()%>" class="text-monospace text-danger">Stock disponible <span class="font-weight-bold" ><%= listaReq.get(i).getStock()%></span></span>
+                                                            <span style="display:none;" id="<%= listaReq.get(i).getIdprod()%>" class="text-monospace text-danger">Stock disponible <span class="font-weight-bold" ><%= listaReq.get(i).getStock()%></span></span>
                                                         </div>
                                                         <div class="card-footer border-0">
                                                             <div class="row align-items-center">
@@ -114,7 +114,10 @@
                                                                     <a onclick="abrirDetalles('<%= listaReq.get(i).getDecripcion()%>');" data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-secondary">Detalles</a>
                                                                 </div>
                                                                 <div class="col text-right">
-                                                                    <a href="./compra" class="btn btn-sm btn-primary">Comprar</a>
+                                                                    <form role="form" action="./compra" method="GET">
+                                                                        <input type="hidden" name="idProducto" value="<%= listaReq.get(i).getIdprod()%>">
+                                                                        <button class="btn btn-sm btn-primary">Comprar</button>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>

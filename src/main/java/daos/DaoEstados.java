@@ -21,7 +21,6 @@ public class DaoEstados implements IEstados {
     String consulta;
 
     public List<DtoEstados> read() throws Exception {
-        System.out.println("@@@@@@@@@@@"+URL);
         List<DtoEstados> datos = new ArrayList<>();
         consulta = "SELECT * FROM estado";
         Class.forName("com.mysql.cj.jdbc.Driver");

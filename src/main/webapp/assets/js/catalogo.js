@@ -21,9 +21,9 @@ function abrirDetalles(des){
 }
 
 function mostrarStock(id){
-    //$("#"+id).html("Stock disponible: "+id);
+    $( "#"+id ).toggle();
 }
 
 function quitarStock(id){
-    //$("#"+id).html("&nbsp;");
+    $( "#"+id ).toggle();
 }

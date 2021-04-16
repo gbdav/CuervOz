@@ -31,16 +31,16 @@ import javax.servlet.http.HttpSession;
  * @author luisr
  */
 @WebServlet(name = "Controlador", loadOnStartup = 1, urlPatterns = {
-    "/login",
+    //"/login",
     "/catalogo",
-    "/contactanos",
-    "/ayuda",
+    //"/contactanos",
+    //"/ayuda",
     "/tablas",
-    "/registrar",
+    //"/registrar",
     "/buzon",
-    "/mapa_sitio",
-    "/recuperar",
-    "/acerca",
+    //"/mapa_sitio",
+    //"/recuperar",
+    //"/acerca",
     "/Productos",
     "/crud",
     "/error",
@@ -53,56 +53,64 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sesion = request.getSession(false);
         String userPath = request.getServletPath();
-
+        
+        DtoUsuarios usr = (DtoUsuarios) sesion.getAttribute("usuario");
+        
+        System.out.println(usr.getNombre()+"//////////*****");
+        
+        
+        if(usr != null){
+            int ingresa = usr.getTipoUsu();
+            System.out.println(ingresa+"//**/*/*/");
+            
         switch (userPath) {
-            case "/login":
-                userPath = "/login";
-                break;
             case "/catalogo":
-                userPath = "/catalogo";
-                break;
-            case "/contactanos":
-                userPath = "/contactanos";
-                break;
-            case "/ayuda":
-                userPath = "/ayuda";
-                break;
-            case "/registrar":
-                userPath = "/registrar";
+                if(ingresa == 2){
+                    userPath = "/catalogo";
+                }else{
+                   userPath = "/error.html"; 
+                }
                 break;
             case "/buzon":
                 userPath = "/buzon";
                 break;
-            case "/mapa_sitio":
-                userPath = "/mapa_sitio";
-                break;
-            case "/recuperacion":
+            /*case "/recuperacion":
                 userPath = "/recuperacion";
-                break;
+                break;*/
             case "/tablas":
                 userPath = "/tablas";
                 break;
-            case "/recuperar":
+            /*case "/recuperar":
                 userPath = "/recuperar";
-                break;
+                break;*/
             case "/error":
                 userPath = "/error.html";
                 break;
             case "/compra":
-                userPath = "/compra";
+                if(ingresa == 2){
+                    userPath = "/compra";
+                }else{
+                   userPath = "/error.html"; 
+                }
                 break;
             case "/Productos":
-                userPath = "/Productos";
+                if(ingresa == 1){
+                    userPath = "/Productos";
+                }else{
+                   userPath = "/error.html"; 
+                }
                 break;    
             case "/pago":
-                userPath = "/pago";
+                if(ingresa == 2){
+                    userPath = "/pago";
+                }else{
+                   userPath = "/error.html"; 
+                }
                 break;
             case "/controlador":
                 userPath = "/controlador";
-                break;
-            case "/acerca":
-                userPath = "/acerca";
                 break;
             default:
                 userPath = "/error.html";           
@@ -189,6 +197,7 @@ public class Controlador extends HttpServlet {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }
     

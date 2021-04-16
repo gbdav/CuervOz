@@ -43,9 +43,11 @@ public class ControladorValidar extends HttpServlet {
                         System.out.println("contraseña valida");
                         if (usr.getTipoUsu() == 1) {
                             HttpSession sesion = request.getSession();
-                            sesion.setAttribute("correo", usr);
+                            sesion.setAttribute("usuario", usr);
                             response.sendRedirect("Productos");
                         } else {
+                            HttpSession sesion = request.getSession();
+                            sesion.setAttribute("usuario", usr);
                             response.sendRedirect("catalogo");
                         }
                     } else {

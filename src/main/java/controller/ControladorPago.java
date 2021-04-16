@@ -3,6 +3,7 @@ package controller;
 import daos.DaoCompra;
 import daos.DaoEstados;
 import daos.DaoMunicipios;
+import daos.DaoPago;
 import daos.DaoUsuarios;
 import dtos.DtoCompra;
 import dtos.DtoEstados;
@@ -68,10 +69,12 @@ public class ControladorPago extends HttpServlet {
             pago.setNumero(card);
             String expdate = request.getParameter("expdate");
             pago.setFecha(expdate);
+            pago.setId_compra(dtoCompra.getId_compra());
             
-
-            DaoUsuarios dao = new DaoUsuarios();
-            DtoUsuarios usr = dao.read(correo);
+            DaoPago daoPago = new DaoPago();
+            DtoPago dtoPago = daoPago.read(pago);
+            response.sendRedirect("/catalogo");
+            
         } catch (Exception ex) {
             Logger.getLogger(ControladorPago.class.getName()).log(Level.SEVERE, null, ex);
         }

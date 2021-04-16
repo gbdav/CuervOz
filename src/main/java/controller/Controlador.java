@@ -115,7 +115,6 @@ public class Controlador extends HttpServlet {
         }
         
         try {
-            System.out.println(url);
             if ("/catalogo".equals(userPath)) {
                 DaoProductos dao = new DaoProductos();
                 List<DtoProductos> datos = dao.read();

@@ -1,12 +1,13 @@
 package daos;
 
 import dtos.DtoCompra;
+import interfaces.ICompra;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class DaoCompra {
+public class DaoCompra implements ICompra{
     
     static String URL="jdbc:mysql://localhost:3306/cuervoz?useSSL=false"; //La  conexion
     static String USER="root";
@@ -29,6 +30,5 @@ public class DaoCompra {
         conn.close();
         
         return dto;
-    }
-    
+    }    
 }

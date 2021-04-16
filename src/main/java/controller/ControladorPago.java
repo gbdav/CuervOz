@@ -73,7 +73,7 @@ public class ControladorPago extends HttpServlet {
             
             DaoPago daoPago = new DaoPago();
             DtoPago dtoPago = daoPago.read(pago);
-            response.sendRedirect("/catalogo");
+            response.sendRedirect("./catalogo");
             
         } catch (Exception ex) {
             Logger.getLogger(ControladorPago.class.getName()).log(Level.SEVERE, null, ex);

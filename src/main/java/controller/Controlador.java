@@ -160,6 +160,7 @@ public class Controlador extends HttpServlet {
                 String idMunicipio = request.getParameter("municipio");
                 compra.setId_municipio(Integer.parseInt(idMunicipio));
                 String idprod = request.getParameter("idprod");
+                System.out.println(idprod);
                 compra.setIdprod(Integer.parseInt(idprod));
                 request.setAttribute("compra", compra);
                 DaoEstados daoEstados = new DaoEstados();

@@ -71,7 +71,7 @@
                                                 <div class="text-muted text-center mt-2 mb-3"><h1>Forma de pago</h1></div>
                                             </div>
                                             <div class="card-body px-lg-5 py-lg-5">
-                                                <form role="form" action="./pago" method="GET">
+                                                <form role="form" action="Pagar" method="GET">
                                                     <div class="modal-header">
                                                         <a data-toggle="modal" data-target="#exampleModal" class="btn btn-info btn-lg text-white"><i class="fas fa-shopping-cart"></i>&nbsp;Ver detalles de la compra</a>
                                                         <hr />
@@ -131,19 +131,19 @@
                                                     </div>
                                                     <input type="hidden" name="estado" value="<%= estado.getId_estado()%>"/>
                                                     <input type="hidden" name="municipio" value="<%= municipio.getId_municipio()%>"/>
-                                                    <input type="hidden" name="ap1" value="value="<%= compra.getApellido1() %>"/>
-                                                    <input type="hidden" name="ap2" value="value="<%= compra.getApellido2()%>"/>
-                                                    <input type="hidden" name="calle" value="value="<%= compra.getCalle()%>"/>
-                                                    <input type="hidden" name="colonia" value="value="<%= compra.getColonia()%>"/>
-                                                    <input type="hidden" name="correo" value="value="<%= compra.getCorreo()%>"/>
-                                                    <input type="hidden" name="noExt" value="value="<%= compra.getNoExt() %>"/>
-                                                    <input type="hidden" name="noInt" value="value="<%= compra.getNoInt()%>"/>
-                                                    <input type="hidden" name="nombre" value="value="<%= compra.getNombre()%>"/>
-                                                    <input type="hidden" name="numero" value="value="<%= compra.getNumero()%>"/>
-                                                    <input type="hidden" name="idprod" value="value="<%= producto.getIdprod()%>"/>
+                                                    <input type="hidden" name="ap1" value="<%= compra.getApellido1() %>"/>
+                                                    <input type="hidden" name="ap2" value="<%= compra.getApellido2()%>"/>
+                                                    <input type="hidden" name="calle" value="<%= compra.getCalle()%>"/>
+                                                    <input type="hidden" name="colonia" value="<%= compra.getColonia()%>"/>
+                                                    <input type="hidden" name="correo" value="<%= compra.getCorreo()%>"/>
+                                                    <input type="hidden" name="noExt" value="<%= compra.getNoExt() %>"/>
+                                                    <input type="hidden" name="noInt" value="<%= compra.getNoInt()%>"/>
+                                                    <input type="hidden" name="nombre" value="<%= compra.getNombre()%>"/>
+                                                    <input type="hidden" name="numero" value="<%= compra.getNumero()%>"/>
+                                                    <input type="hidden" name="idprod" value="<%= producto.getIdprod()%>"/>
                                                     <div class="modal-footer">
                                                         <button id="btnCancelarE" onclick="reset()" class="btn btn-outline-secondary"><I class="fas fa-times-circle"></I>&nbsp;Cancelar</button>
-                                                        <button href="./catalogo" class="btn btn-outline-success"><I class="fas fa-check-circle"></I>&nbsp;Continuar</button>
+                                                        <button class="btn btn-outline-success"><I class="fas fa-check-circle"></I>&nbsp;Continuar</button>
                                                     </div>
                                                 </form>
                                             </div>

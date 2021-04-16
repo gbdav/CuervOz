@@ -13,21 +13,21 @@ public class DaoPago implements IPago {
     static String PWD="1234";
     
     Connection conn;
-    ResultSet rs;
+    int rs;
     PreparedStatement pst;
     String consulta;
     
     public DtoPago read(DtoPago doPago) throws Exception {
-        DtoPago dto = null; 
-        consulta = "SELECT * FROM estado WHERE id_estado like?";
+        consulta = "INSERT INTO pago (nombre, numero, fecha, id_compra) values (?, ?, ?, ?)";
         Class.forName("com.mysql.cj.jdbc.Driver");
         conn =  DriverManager.getConnection(URL, USER, PWD);
         pst = conn.prepareStatement(consulta);
-        pst.setString(1, "");
-        rs = pst.executeQuery();  
-       
+        pst.setString(1, doPago.getNombre());
+        pst.setString(2, doPago.getNumero());
+        pst.setString(3, doPago.getFecha());
+        pst.setInt(4, doPago.getId_compra());
+        rs = pst.executeUpdate();
         conn.close();
-        
-        return dto;
+        return doPago;
     }
 }
